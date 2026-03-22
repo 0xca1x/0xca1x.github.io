@@ -1,0 +1,1 @@
+(globalThis.webpackChunkcallums_lab=globalThis.webpackChunkcallums_lab||[]).push([[5741],{5741(){}}]);

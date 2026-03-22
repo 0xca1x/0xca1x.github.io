@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Callum's Lab Blog</title>
+        <link>https://0xca1x.github.io/blog</link>
+        <description>Callum's Lab Blog</description>
+        <lastBuildDate>Fri, 20 Mar 2026 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Why This Blog Exists]]></title>
+            <link>https://0xca1x.github.io/blog/why-this-blog-exists</link>
+            <guid>https://0xca1x.github.io/blog/why-this-blog-exists</guid>
+            <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[This blog is for writing that deserves a more public form than the notes in the docs section.]]></description>
+            <content:encoded><![CDATA[<p>This blog is for writing that deserves a more public form than the notes in the docs section.</p>
+<p>Most of the site is a working research base: narrower notes, study material, references, and write-ups kept close to the original work. The blog is where that material gets distilled into something more readable for a broader audience.</p>
+<p>I expect most posts here to fall into a few categories:</p>
+<ul>
+<li class="">research summaries worth reading on their own</li>
+<li class="">vulnerability analysis and case studies</li>
+<li class="">write-ups on methods, tooling, and review practice</li>
+<li class="">occasional reflections on how I approach technical work</li>
+</ul>
+<p>The standard is simple:</p>
+<ul>
+<li class="">explain the problem clearly</li>
+<li class="">keep examples concrete</li>
+<li class="">leave the reader with something reusable</li>
+</ul>
+<p>The goal is not to publish often. The goal is to publish things worth revisiting.</p>]]></content:encoded>
+            <category>Security</category>
+        </item>
+    </channel>
+</rss>
