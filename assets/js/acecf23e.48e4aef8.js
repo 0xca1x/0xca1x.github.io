@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcallums_lab=self.webpackChunkcallums_lab||[]).push([["3220"],{1912(l){l.exports=JSON.parse('{"blogBasePath":"/blog","blogTitle":"Blog","authorsListPath":"/blog/authors"}')}}]);

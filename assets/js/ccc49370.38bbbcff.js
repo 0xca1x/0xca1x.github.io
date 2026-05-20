@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcallums_lab=self.webpackChunkcallums_lab||[]).push([["6074"],{4769(a,s,l){l.d(s,{A:()=>u});var e=l(4848);l(6540);var c=l(4164),n=l(5768);l(2426);function u(a){var s;return(0,e.jsx)(n.i,{wrapElement:"span",children:(0,e.jsx)("img",{decoding:"async",loading:"lazy",...a,className:(s=a.className,(0,c.A)(s,"img_CujE"))})})}}}]);

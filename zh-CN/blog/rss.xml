@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Callum's Lab Blog</title>
+        <link>https://0xca1x.github.io/zh-CN/blog</link>
+        <description>Callum's Lab Blog</description>
+        <lastBuildDate>Fri, 20 Mar 2026 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh-CN</language>
+        <item>
+            <title><![CDATA[为什么会有这个博客]]></title>
+            <link>https://0xca1x.github.io/zh-CN/blog/why-this-blog-exists</link>
+            <guid>https://0xca1x.github.io/zh-CN/blog/why-this-blog-exists</guid>
+            <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Callum's Lab 为什么要把安全、Web3 与 AI 的工作笔记，与更成型的公开写作分开放。]]></description>
+            <content:encoded><![CDATA[<p>本博客旨在发表那些比“文档”部分中的笔记更值得公之于众的文章。</p>
+<p>本网站的大部分内容是一个正在运作的研究基地：包含更细致的笔记、学习资料、参考文献以及紧贴原始研究成果的撰文。博客则是将这些内容提炼成更易于广大读者阅读的形式的地方。</p>
+<!-- -->
+<p>我预计这里的大多数帖子会归入以下几类：</p>
+<ul>
+<li class="">这些研究摘要与综述本身就值得一读</li>
+<li class="">漏洞分析与案例研究</li>
+<li class="">关于方法、工具和评审实践的说明</li>
+<li class="">关于我处理技术工作的零星思考</li>
+</ul>
+<p>标准其实很简单:</p>
+<ul>
+<li class="">清楚地说明问题</li>
+<li class="">示例应具体</li>
+<li class="">给读者留下一些可再利用的内容</li>
+</ul>
+<p>目标不在于频繁发布，而在于发布值得反复品读的内容。</p>]]></content:encoded>
+            <category>安全</category>
+        </item>
+    </channel>
+</rss>
