@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcallums_lab=self.webpackChunkcallums_lab||[]).push([["1833"],{5513(e){e.exports=JSON.parse('{"title":"\u6700\u8FD1\u7684\u6587\u7AE0","items":[{"title":"\u4E3A\u4EC0\u4E48\u4F1A\u6709\u8FD9\u4E2A\u535A\u5BA2","permalink":"/zh-CN/blog/why-this-blog-exists","unlisted":false,"date":"2026-03-20T00:00:00.000Z"}]}')}}]);
