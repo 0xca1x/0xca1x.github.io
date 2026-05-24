@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcallums_lab=self.webpackChunkcallums_lab||[]).push([["1833"],{5513(s){s.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Why This Blog Exists","permalink":"/blog/why-this-blog-exists","unlisted":false,"date":"2026-03-20T00:00:00.000Z"}]}')}}]);

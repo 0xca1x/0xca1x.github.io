@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcallums_lab=self.webpackChunkcallums_lab||[]).push([["3220"],{1912(l){l.exports=JSON.parse('{"blogBasePath":"/zh-CN/blog","blogTitle":"Callum \u7684\u535A\u5BA2","authorsListPath":"/zh-CN/blog/authors"}')}}]);

@@ -1,0 +1,633 @@
+<!doctype html><html lang=en-US dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-sec/writeups/htb-academy/Fundamentals-of-AI/index" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Fundamentals of AI | Callum's Lab</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true property=og:image content=https://0xca1x.github.io/img/callums-lab-social-card.png /><meta data-rh=true name=twitter:image content=https://0xca1x.github.io/img/callums-lab-social-card.png /><meta data-rh=true property=og:url content=https://0xca1x.github.io/docs/sec/writeups/htb-academy/Fundamentals-of-AI/ /><meta data-rh=true property=og:locale content=en_US /><meta data-rh=true property=og:locale:alternate content=zh_CN /><meta data-rh=true name=docusaurus_locale content=en /><meta data-rh=true name=docsearch:language content=en /><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:type content=website /><meta data-rh=true property=og:site_name content="Callum's Lab"/><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Fundamentals of AI | Callum's Lab"/><meta data-rh=true name=description content="HTB Academy AI Fundamentals Module Writeup — Core Concepts of Machine Learning, Deep Learning, and Generative AI, and Skills Assessment Solutions"/><meta data-rh=true property=og:description content="HTB Academy AI Fundamentals Module Writeup — Core Concepts of Machine Learning, Deep Learning, and Generative AI, and Skills Assessment Solutions"/><meta data-rh=true name=keywords content="HTB Academy,Fundamentals of AI,Writeup,Machine Learning,Deep Learning,Artificial Intelligence"/><link data-rh=true rel=icon href=/img/favicon.svg /><link data-rh=true rel=canonical href=https://0xca1x.github.io/docs/sec/writeups/htb-academy/Fundamentals-of-AI/ /><link data-rh=true rel=alternate href=https://0xca1x.github.io/docs/sec/writeups/htb-academy/Fundamentals-of-AI/ hreflang=en-US /><link data-rh=true rel=alternate href=https://0xca1x.github.io/zh-CN/docs/sec/writeups/htb-academy/Fundamentals-of-AI/ hreflang=zh-CN /><link data-rh=true rel=alternate href=https://0xca1x.github.io/docs/sec/writeups/htb-academy/Fundamentals-of-AI/ hreflang=x-default /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://0xca1x.github.io/docs/sec/writeups/","name":"Writeups","position":1},{"@type":"ListItem","item":"https://0xca1x.github.io/docs/sec/writeups/htb-academy/","name":"HTB Academy","position":2},{"@type":"ListItem","item":"https://0xca1x.github.io/docs/sec/writeups/htb-academy/Fundamentals-of-AI/","name":"Fundamentals of AI","position":3}]}</script><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="Callum's Lab RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="Callum's Lab Atom Feed"><link rel=stylesheet href=/assets/css/styles.299bf99f.css /><script src=/assets/js/runtime~main.d9630e19.js defer></script><script src=/assets/js/main.02fa9ed7.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-callums-lab")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/img/logo.svg /><div role=region aria-label="Skip to main content"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><nav aria-label=Main class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/logo.svg alt="Callum's Lab Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/logo.svg alt="Callum's Lab Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">Callum's Lab</b></a><a class="navbar__item navbar__link" href=/docs/>Docs</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/docs/sec>Security</a><a class="navbar__item navbar__link" href=/docs/web3>Web3</a><a class="navbar__item navbar__link" href=/docs/ai>AI</a><a class="navbar__item navbar__link" href=/blog>Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar-search-first navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir=ltr><input placeholder=Search aria-label=Search class="navbar__search-input searchInput_YFbd" value="" /><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class="navbar__link localeDropdownTrigger_P4wv" data-locale=en><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>English</a><ul class=dropdown__menu><li><a href=/docs/sec/writeups/htb-academy/Fundamentals-of-AI/ target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=en-US>English</a><li><a href=/zh-CN/docs/sec/writeups/htb-academy/Fundamentals-of-AI/ target=_self rel="noopener noreferrer" class=dropdown__link lang=zh-CN>中文</a></ul></div><a href=https://github.com/0xca1x target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/docs/sec/><span title="Security Research" class=linkLabel_WmDU>Security Research</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/docs/sec/writeups/><span title=Writeups class=categoryLinkLabel_W154>Writeups</span></a><button aria-label="Collapse sidebar category 'Writeups'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex=0 href=/docs/sec/writeups/htb-academy/><span title="HTB Academy" class=categoryLinkLabel_W154>HTB Academy</span></a><button aria-label="Collapse sidebar category 'HTB Academy'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/docs/sec/writeups/htb-academy/Intro-to-Academy/><span title="Intro to Academy" class=linkLabel_WmDU>Intro to Academy</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/docs/sec/writeups/htb-academy/Fundamentals-of-AI/><span title="Fundamentals of AI" class=linkLabel_WmDU>Fundamentals of AI</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/docs/sec/writeups/htb-academy/Applications-of-AI-in-InfoSec/><span title="Applications of AI in InfoSec" class=linkLabel_WmDU>Applications of AI in InfoSec</span></a></ul></ul></ul></nav></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=Breadcrumbs><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label="Home page" class=breadcrumbs__link href=/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/docs/sec/writeups/><span>Writeups</span></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/docs/sec/writeups/htb-academy/><span>HTB Academy</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Fundamentals of AI</span></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Fundamentals of AI — Writeup</h1></header>
+<table><thead><tr><th>Module ID<th>Difficulty<th>Estimated Duration<th>Number of Sections<th>Reward<tbody><tr><td>290<td>Fundamental · Tier 0<td>6 Hours<td>24 (including 1 interactive skills assessment)<td>10 Cubes</table>
+<p><strong>Module Link:</strong> <a href=https://academy.hackthebox.com/module/details/290 target=_blank rel="noopener noreferrer" class="">academy.hackthebox.com/module/details/290</a></p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=table-of-contents>Table of Contents<a href=#table-of-contents class=hash-link aria-label="Direct link to Table of Contents" title="Direct link to Table of Contents" translate=no>​</a></h2>
+<table><thead><tr><th>#<th>Section<th>Type<tbody><tr><td>1<td><a href=#1-introduction-to-machine-learning class="">Introduction to Machine Learning</a><td>Theory<tr><td>2<td><a href=#2-mathematics-refresher-for-ai class="">Mathematics Refresher for AI</a><td>Theory<tr><td>3<td><a href=#3-supervised-learning-algorithms class="">Supervised Learning Algorithms</a><td>Theory<tr><td>4<td><a href=#4-linear-regression class="">Linear Regression</a><td>Theory<tr><td>5<td><a href=#5-logistic-regression class="">Logistic Regression</a><td>Theory<tr><td>6<td><a href=#6-decision-trees class="">Decision Trees</a><td>Theory<tr><td>7<td><a href=#7-naive-bayes class="">Naive Bayes</a><td>Theory<tr><td>8<td><a href=#8-support-vector-machines-svms class="">Support Vector Machines (SVMs)</a><td>Theory<tr><td>9<td><a href=#9-unsupervised-learning-algorithms class="">Unsupervised Learning Algorithms</a><td>Theory<tr><td>10<td><a href=#10-k-means-clustering class="">K-Means Clustering</a><td>Theory<tr><td>11<td><a href=#11-principal-component-analysis-pca class="">Principal Component Analysis (PCA)</a><td>Theory<tr><td>12<td><a href=#12-anomaly-detection class="">Anomaly Detection</a><td>Theory<tr><td>13<td><a href=#13-reinforcement-learning-algorithms class="">Reinforcement Learning Algorithms</a><td>Theory<tr><td>14<td><a href=#14-q-learning class="">Q-Learning</a><td>Theory<tr><td>15<td><a href=#15-sarsa-state-action-reward-state-action class="">SARSA (State-Action-Reward-State-Action)</a><td>Theory<tr><td>16<td><a href=#16-introduction-to-deep-learning class="">Introduction to Deep Learning</a><td>Theory<tr><td>17<td><a href=#17-perceptrons class="">Perceptrons</a><td>Theory<tr><td>18<td><a href=#18-neural-networks class="">Neural Networks</a><td>Theory<tr><td>19<td><a href=#19-convolutional-neural-networks class="">Convolutional Neural Networks</a><td>Theory<tr><td>20<td><a href=#20-recurrent-neural-networks class="">Recurrent Neural Networks</a><td>Theory<tr><td>21<td><a href=#21-introduction-to-generative-ai class="">Introduction to Generative AI</a><td>Theory<tr><td>22<td><a href=#22-large-language-models class="">Large Language Models</a><td>Theory<tr><td>23<td><a href=#23-diffusion-models class="">Diffusion Models</a><td>Theory<tr><td>24<td><a href=#24-skills-assessment class="">Skills Assessment</a><td>Interactive</table>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=1-introduction-to-machine-learning>1. Introduction to Machine Learning<a href=#1-introduction-to-machine-learning class=hash-link aria-label="Direct link to 1. Introduction to Machine Learning" title="Direct link to 1. Introduction to Machine Learning" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-learning-points>Key Learning Points<a href=#key-learning-points class=hash-link aria-label="Direct link to Key Learning Points" title="Direct link to Key Learning Points" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>AI</strong>: Developing systems that can perform tasks requiring human intelligence, covering NLP, computer vision, robotics, expert systems</li>
+<li class=""><strong>ML</strong>: A subfield of AI where systems learn from data rather than being explicitly programmed, divided into three main categories:<!-- -->
+<ul>
+<li class=""><strong>Supervised Learning</strong>: learning from labeled data (image classification, spam detection)</li>
+<li class=""><strong>Unsupervised Learning</strong>: discovering patterns from unlabeled data (customer segmentation, anomaly detection)</li>
+<li class=""><strong>Reinforcement Learning</strong>: learning through trial and error with reward and punishment feedback (games, robotics, autonomous driving)</li>
+</ul>
+</li>
+<li class=""><strong>DL</strong>: a subfield of ML, which uses multi-layer neural networks to automatically extract features; representative architectures include CNN, RNN, Transformer</li>
+<li class="">Relationship of the three: DL ⊂ ML ⊂ AI</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights>Understanding and Insights<a href=#understanding-and-insights class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>The inclusion relationship AI ⊃ ML ⊃ DL is the core mental model throughout the entire module</strong>—each layer is a specialization of the previous one. AI is the broadest goal (enabling machines to exhibit intelligence), ML is the mainstream methodology for achieving AI (learning from data), and DL is the most automated family of methods within ML (automatic feature extraction)</li>
+<li class="">The choice among the three learning paradigms depends on the <strong>available form of data</strong>: choose supervised for labeled data, unsupervised for unlabeled data, and reinforcement for interactive environments. This is not a distinction of algorithm superiority, but rather the problem's nature dictates the method.</li>
+<li class="">A common point of confusion: Deep Learning is not always superior to traditional ML. When data volume is small and features are clear, traditional ML is often more efficient and interpretable.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways>Practical Takeaways<a href=#practical-takeaways class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Established a hierarchical cognitive framework for AI/ML/DL, enabling quick identification of where new technologies fit within this hierarchy.</li>
+<li class="">Mastered the basic judgment ability to select learning paradigms based on problem type (labeled/unlabeled, interactive environment or not).</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=2-mathematics-refresher-for-ai>2. Mathematics Refresher for AI<a href=#2-mathematics-refresher-for-ai class=hash-link aria-label="Direct link to 2. Mathematics Refresher for AI" title="Direct link to 2. Mathematics Refresher for AI" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points>Key Knowledge Points<a href=#key-knowledge-points class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<p>This section serves as a reference manual, listing mathematical symbols and concepts covered in subsequent chapters:</p>
+<ul>
+<li class=""><strong>Basic Operations</strong>: addition, subtraction, multiplication, division, subscript/superscript notation</li>
+<li class=""><strong>Linear Algebra</strong>: vector norms, matrix multiplication/transpose/inverse/determinant/trace, eigenvalues and eigenvectors</li>
+<li class=""><strong>Calculus and Statistics</strong>：Summation symbol Σ、Logarithms (log2, ln)、Exponential functions</li>
+<li class=""><strong>Probability Theory</strong>：Conditional probability P(x|y)、Expectation E[X]、Variance、Standard deviation、Covariance、Correlation</li>
+<li class=""><strong>Set Theory</strong>：Cardinality、Union、Intersection、Complement</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-1>Understanding and Insights<a href=#understanding-and-insights-1 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The value of this section lies in establishing a <strong>mapping from symbols to meanings</strong> — enabling quick reference when formulas appear frequently in subsequent chapters.</li>
+<li class="">Different branches of mathematics correspond to different ML scenarios: linear algebra supports matrix operations in neural networks, probability theory is the cornerstone of Bayesian methods, and calculus drives gradient descent optimization.</li>
+<li class="">Eigenvalues and eigenvectors may seem abstract in this section, but when we get to PCA, we'll find they are core tools for dimensionality reduction.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-1>Practical Takeaways<a href=#practical-takeaways-1 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Gained a quick reference guide for mathematical symbols that can be consulted repeatedly, lowering the barrier to reading subsequent chapters.</li>
+<li class="">Established an awareness of the correspondence between mathematical tools and ML application scenarios.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=3-supervised-learning-algorithms>3. Supervised Learning Algorithms<a href=#3-supervised-learning-algorithms class=hash-link aria-label="Direct link to 3. Supervised Learning Algorithms" title="Direct link to 3. Supervised Learning Algorithms" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-points>Key Points<a href=#key-points class=hash-link aria-label="Direct link to Key Points" title="Direct link to Key Points" translate=no>​</a></h3>
+<ul>
+<li class="">Supervised learning learns mapping functions from labeled data, divided into <strong>classification</strong> (predicting categories) and <strong>regression</strong> (predicting continuous values).</li>
+<li class="">Core Concepts:<!-- -->
+<ul>
+<li class=""><strong>Training Data / Features / Labels</strong>：Basic components of input and output</li>
+<li class=""><strong>Model / Training / Prediction / Inference</strong>：The entire process from construction to application</li>
+<li class=""><strong>Evaluation Metrics</strong>：Accuracy、Precision、Recall、F1-score</li>
+<li class=""><strong>Generalization / Overfitting / Underfitting</strong>: Key issues for model performance on new data</li>
+<li class=""><strong>Cross-validation</strong>: Splitting data into multiple folds to more reliably evaluate models</li>
+<li class=""><strong>Regularization</strong>: L1 / L2 penalty terms, preventing overfitting</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-2>Understanding and Insights<a href=#understanding-and-insights-2 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>The concepts of overfitting/underfitting/generalization are more important than any single algorithm</strong>—they are the universal criteria for judging the quality of all models. No matter how well a model performs on the training set, if its generalization is poor, it is worthless.</li>
+<li class=""><strong>Cross-validation is a practical tool for catching overfitting</strong>: A single train/test split might lead to misjudgment due to data distribution randomness; K-fold cross-validation averages results from multiple splits, providing a more robust performance estimate.</li>
+<li class="">There is a natural tension (trade-off) between Precision and Recall: Increasing Precision usually lowers Recall, and vice versa. F1-score is the harmonic mean of the two, suitable for scenarios requiring balanced consideration.</li>
+<li class="">The essence of regularization is <strong>to make a trade-off between model complexity and training error</strong>—L1 tends to produce sparse solutions (automatic feature selection), while L2 tends to make weights generally smaller.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-2>Practical Takeaways<a href=#practical-takeaways-2 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Established a "generalization-first" model evaluation mindset: Training set performance is not the goal; test set/cross-validation results are.</li>
+<li class="">Mastered cross-validation as a standard operating procedure for diagnosing overfitting</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=4-linear-regression>4. Linear Regression<a href=#4-linear-regression class=hash-link aria-label="Direct link to 4. Linear Regression" title="Direct link to 4. Linear Regression" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-concepts>Key Concepts<a href=#key-concepts class=hash-link aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Linear Regression</strong>: Modeling the relationship between predictor and target variables using a linear equation</li>
+<li class="">Simple Linear Regression: <code>y = mx + c</code> (one predictor variable)</li>
+<li class="">Multiple Linear Regression: <code>y = b0 + b1x1 + b2x2 + ... + bnxn</code></li>
+<li class=""><strong>Ordinary Least Squares (OLS)</strong>: Finding the best-fit line by minimizing the Residual Sum of Squares (RSS)</li>
+<li class="">Four Major Assumptions: Linear Relationship, Independence of Observations, Homoscedasticity, Normality of Errors</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-3>Understanding and Insights<a href=#understanding-and-insights-3 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">Linear Regression is the starting point and baseline for all regression models—even if the actual problem is nonlinear, linear regression is often used first to establish a reference.</li>
+<li class="">The essence of OLS is an <strong>optimization problem with an analytical solution</strong>: For linear regression, iterative optimization is not required; the optimal weights can be directly calculated using mathematical formulas. This contrasts with subsequent neural networks that require gradient descent iterative optimization.</li>
+<li class="">The four major assumptions are often violated in real-world data, in which case data transformation (e.g., taking logarithms) or switching to a more flexible model is necessary.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-3>Practical Takeaways<a href=#practical-takeaways-3 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the status of linear regression as the simplest predictive model, and why it is often used as a baseline model.</li>
+<li class="">Realized that model assumptions are not negligible details—when assumptions are not met, model conclusions may be invalid.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=5-logistic-regression>5. Logistic Regression<a href=#5-logistic-regression class=hash-link aria-label="Direct link to 5. Logistic Regression" title="Direct link to 5. Logistic Regression" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-1>Key Knowledge Points<a href=#key-knowledge-points-1 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class="">Although named "regression", it is actually used for <strong>binary classification</strong>, outputting probability values between 0 and 1.</li>
+<li class="">The core is the <strong>Sigmoid function</strong>: <code>P(x) = 1 / (1 + e^-z)</code>, which maps linear combinations to probabilities.</li>
+<li class=""><strong>Decision Boundary</strong>: determined by model parameters and threshold probability, which is a hyperplane in high-dimensional space.</li>
+<li class="">The threshold is usually set to 0.5, and can be adjusted according to business needs.</li>
+<li class="">Assumptions: Binary output, Linearity of log-odds, Low multicollinearity among features, Large sample size</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-4>Understanding and Insights<a href=#understanding-and-insights-4 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>It has "regression" in its name but is actually a classification algorithm</strong>—this is the most common naming trap. The reason it's called "regression" is because it models log-odds using a linear equation at its core, regressing probabilities rather than continuous values.</li>
+<li class=""><strong>Core Value of the Sigmoid Function</strong>: It maps any real value to the (0, 1) interval, giving the output a probabilistic meaning. This function later also became one of the earliest activation functions used in neural networks.</li>
+<li class=""><strong>Thresholds are adjustable</strong>, which is very practical: In the original spam example, the threshold was set to 0.8; adjusting to 0.6 would require a higher probability to be classified as spam. In scenarios like medical diagnosis, the threshold can be lowered to reduce missed diagnoses (leaning towards Recall), while in scenarios where false positives are costly, the threshold can be raised to reduce misjudgments (leaning towards Precision).</li>
+<li class="">Logistic Regression outputs probabilities rather than hard classifications, which gives decision-makers more flexibility—allowing them to take actions of varying intensity based on the probability.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-4>Practical Takeaways<a href=#practical-takeaways-4 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Clarified that "regression" and "classification" can be bridged by the Sigmoid function: Linear Regression + Sigmoid = Logistic Regression (Classifier).</li>
+<li class="">Understood that threshold adjustment is a key link between model output and business requirements.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=6-decision-trees>6. Decision Trees<a href=#6-decision-trees class=hash-link aria-label="Direct link to 6. Decision Trees" title="Direct link to 6. Decision Trees" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-concepts-1>Key Concepts<a href=#key-concepts-1 class=hash-link aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate=no>​</a></h3>
+<ul>
+<li class="">Tree-structured model, composed of <strong>root node → internal nodes → leaf nodes</strong>.</li>
+<li class="">Splitting criteria:<!-- -->
+<ul>
+<li class=""><strong>Gini impurity</strong>: <code>Gini(S) = 1 - Σ(pi)²</code>, the lower, the purer</li>
+<li class=""><strong>Entropy</strong>: <code>Entropy(S) = -Σ pi * log2(pi)</code>, the lower, the more ordered</li>
+<li class=""><strong>Information Gain</strong>: The reduction in entropy before and after splitting; the larger, the better.</li>
+</ul>
+</li>
+<li class="">Stopping conditions: reaching maximum depth, node data volume below threshold, node is pure.</li>
+<li class="">Advantages: no linear/normal assumptions, robust to outliers, can handle non-linear relationships.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-5>Understanding and Insights<a href=#understanding-and-insights-5 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The biggest advantage of decision trees is their <strong>interpretability</strong>—the decision path can be directly shown to non-technical personnel, e.g., "If X > 5 and Y &lt; 3, then it belongs to class A". This is very valuable in security auditing and compliance scenarios.</li>
+<li class="">Gini impurity and entropy do not differ much in practice, but the conceptual difference is worth understanding: Gini measures "the probability that two randomly selected samples have different classes", and entropy measures "the uncertainty of information"</li>
+<li class="">The biggest drawback of decision trees is that they are <strong>prone to overfitting</strong>—unrestricted trees will perfectly fit the training set but generalize very poorly. This is precisely the motivation behind the invention of random forests (ensemble of trees) and pruning techniques.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-5>Practical Takeaways<a href=#practical-takeaways-5 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood that decision trees, as naturally interpretable models, are irreplaceable in scenarios requiring transparency.</li>
+<li class="">Understood the intuition of information gain as a feature selection criterion: choose the feature that results in the greatest reduction in "disorder" after splitting.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=7-naive-bayes>7. Naive Bayes<a href=#7-naive-bayes class=hash-link aria-label="Direct link to 7. Naive Bayes" title="Direct link to 7. Naive Bayes" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-concepts-2>Key Concepts<a href=#key-concepts-2 class=hash-link aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate=no>​</a></h3>
+<ul>
+<li class="">Probability classification algorithm based on <strong>Bayes' Theorem</strong>: <code>P(A|B) = [P(B|A) * P(A)] / P(B)</code></li>
+<li class="">"Naive" assumption: features are <strong>conditionally independent</strong> given the class</li>
+<li class="">Workflow: Calculate prior probabilities → Calculate likelihoods → Apply Bayes' Theorem → Select the class with the highest posterior probability</li>
+<li class="">Three variants:<!-- -->
+<ul>
+<li class=""><strong>Gaussian Naive Bayes</strong>: continuous features, assumes Gaussian distribution</li>
+<li class=""><strong>Multinomial Naive Bayes</strong>: discrete features, commonly used for text classification</li>
+<li class=""><strong>Bernoulli Naive Bayes</strong>: binary features (presence/absence)</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-6>Understanding and Insights<a href=#understanding-and-insights-6 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>The "naive" independence assumption is almost always wrong—yet the algorithm still performs excellently in practice</strong>, which is a counter-intuitive but important realization. The reason is that classification tasks only require <strong>relative probability ranking</strong> to be correct (which class has the highest posterior probability), not precise absolute probability values. Even if probability values are biased due to the independence assumption, the ranking relationship often remains correct.</li>
+<li class="">Naive Bayes has long held a dominant position in text classification (spam filtering, sentiment analysis) because the high-dimensional sparse features of text are well-suited for this type of model—high dimensionality but each document involves only a few words.</li>
+<li class="">The choice of the three variants depends on the data type of the features, not the problem itself: continuous values use Gaussian, word frequency uses Multinomial, and binary existence uses Bernoulli.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-6>Practical Takeaways<a href=#practical-takeaways-6 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the phenomenon of 'assumptions being wrong but the model still being effective'—the practical value of the model does not depend on the strict validity of the assumptions, but on whether the assumption bias affects the final decision.</li>
+<li class="">In the field of security, Naive Bayes is often used for initial screening in spam filtering and intrusion detection.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=8-support-vector-machines-svms>8. Support Vector Machines (SVMs)<a href=#8-support-vector-machines-svms class=hash-link aria-label="Direct link to 8. Support Vector Machines (SVMs)" title="Direct link to 8. Support Vector Machines (SVMs)" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-points-1>Key Points<a href=#key-points-1 class=hash-link aria-label="Direct link to Key Points" title="Direct link to Key Points" translate=no>​</a></h3>
+<ul>
+<li class="">Finding the <strong>maximum margin hyperplane</strong> to separate different classes; the larger the margin, the better the generalization.</li>
+<li class=""><strong>Support Vectors</strong>: data points closest to the hyperplane, which determine the position of the hyperplane.</li>
+<li class=""><strong>Linear SVM</strong>: used when data is linearly separable, hyperplane equation <code>w · x + b = 0</code></li>
+<li class=""><strong>Non-linear SVM</strong>: by using the <strong>kernel trick</strong> to map data to a higher-dimensional space to make it linearly separable.<!-- -->
+<ul>
+<li class="">Common kernel functions: Polynomial kernel, RBF kernel, Sigmoid kernel.</li>
+</ul>
+</li>
+<li class="">Advantages: no distribution assumptions, good with high-dimensional data, robust to outliers.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-7>Understanding and Insights<a href=#understanding-and-insights-7 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The intuition behind <strong>maximum margin</strong> is very elegant: the larger the margin, the greater the model's tolerance for new data, and the stronger its generalization ability. This directly echoes the discussion on overfitting/generalization.</li>
+<li class=""><strong>The elegance of the kernel trick</strong>: it doesn't require actual computation in the high-dimensional space, but rather directly computes the inner product in the high-dimensional space via the kernel function, avoiding the computational cost brought by the 'curse of dimensionality'.</li>
+<li class="">SVM only cares about data points near the decision boundary (support vectors); points far from the boundary do not affect the result. This makes it particularly effective in high-dimensional, small-sample scenarios.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-7>Practical Takeaways<a href=#practical-takeaways-7 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the idea of using "maximum margin" as a proxy metric for generalization ability, an idea that repeatedly appears in ML.</li>
+<li class="">The kernel trick provides a concrete example for understanding the general strategy of "transforming problems into an easier-to-solve space".</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=9-unsupervised-learning-algorithms>9. Unsupervised Learning Algorithms<a href=#9-unsupervised-learning-algorithms class=hash-link aria-label="Direct link to 9. Unsupervised Learning Algorithms" title="Direct link to 9. Unsupervised Learning Algorithms" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-takeaways>Key Takeaways<a href=#key-takeaways class=hash-link aria-label="Direct link to Key Takeaways" title="Direct link to Key Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Discovering hidden patterns from <strong>unlabeled data</strong>, three main task types:<!-- -->
+<ul>
+<li class=""><strong>Clustering</strong>: Grouping similar data</li>
+<li class=""><strong>Dimensionality Reduction</strong>: Reducing the number of features while retaining key information</li>
+<li class=""><strong>Anomaly Detection</strong>: Identifying data points that significantly deviate from normal patterns</li>
+</ul>
+</li>
+<li class="">Core Concepts:<!-- -->
+<ul>
+<li class=""><strong>Similarity Measures</strong>: Euclidean distance, cosine similarity, Manhattan distance</li>
+<li class=""><strong>Clustering Tendency / Clustering Validity</strong>: Assessing whether data is suitable for clustering, and the quality of clustering results</li>
+<li class=""><strong>Dimension / Intrinsic Dimension</strong>: Actual number of features in data vs. intrinsic dimension</li>
+<li class=""><strong>Feature Scaling</strong>: Min-Max scaling, Z-score standardization, ensuring features contribute fairly to calculations</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-8>Understanding and Insights<a href=#understanding-and-insights-8 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Key difference from supervised learning: No labels mean it's impossible to simply judge "right or wrong"</strong>—evaluation becomes difficult and subjective. Whether clustering results are "good" often requires judgment from domain experts, or reliance on proxy metrics (e.g., silhouette coefficient)</li>
+<li class="">Unsupervised learning is more like "exploratory analysis" than "predictive modeling": Its value lies in discovering structures in data that humans had not foreseen</li>
+<li class="">Feature scaling is more critical in unsupervised learning than in supervised learning—distance metrics are directly affected by feature scales, and an unscaled feature might dominate the entire clustering result</li>
+<li class="">Anomaly detection is particularly important in the security domain: intrusion detection and fraud detection are typical scenarios, and in these scenarios, anomalous samples are extremely rare and difficult to label.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-8>Practical Takeaways<a href=#practical-takeaways-8 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Developed an understanding of the inherent characteristic of unsupervised learning: 'difficulty in evaluation' – do not expect to get clear accuracy metrics like in supervised learning.</li>
+<li class="">Understood that feature scaling is not an optional step, but a necessary prerequisite for distance-based algorithms.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=10-k-means-clustering>10. K-Means Clustering<a href=#10-k-means-clustering class=hash-link aria-label="Direct link to 10. K-Means Clustering" title="Direct link to 10. K-Means Clustering" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-points-2>Key Points<a href=#key-points-2 class=hash-link aria-label="Direct link to Key Points" title="Direct link to Key Points" translate=no>​</a></h3>
+<ul>
+<li class="">Divides data into <strong>K non-overlapping clusters</strong>, iterative process:<!-- -->
+<ol>
+<li class="">
+<ol>
+<li class="">Randomly select K centroids → 2. Assign each point to the nearest centroid → 3. Recalculate centroids → 4. Repeat until convergence</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class=""><strong>Choosing the Optimal K Value</strong>:<!-- -->
+<ul>
+<li class=""><strong>Elbow Method</strong>: Plot WCSS vs K curve, find the inflection point where the rate of decrease slows down.</li>
+<li class=""><strong>Silhouette Analysis</strong>: Silhouette coefficient range [-1, 1], closer to 1 indicates better clustering.</li>
+</ul>
+</li>
+<li class="">Assumptions and Limitations: Assumes clusters are spherical and similar in size, sensitive to feature scales and outliers.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=insights>Insights<a href=#insights class=hash-link aria-label="Direct link to Insights" title="Direct link to Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The core contradiction of K-Means: <strong>K value needs to be specified in advance, but the number of clusters in real data is often unknown</strong>. Elbow method and silhouette analysis are heuristic methods and do not guarantee a "correct" answer.</li>
+<li class="">Algorithm convergence does not mean finding the global optimum – K-Means only guarantees convergence to a local optimum. In practice, multiple random initializations are often required (e.g., K-Means++ improved initialization strategy) to obtain the best result.</li>
+<li class="">The spherical cluster assumption is a strong limitation: when data clusters are ring-shaped, elongated, or irregularly shaped, K-Means will produce misleading results.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-9>Practical Takeaways<a href=#practical-takeaways-9 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Mastered the usage process of K-Means as the most basic clustering algorithm, and practical methods for selecting K values using the elbow method and silhouette coefficient.</li>
+<li class="">Recognized the limitations of K-Means, establishing motivation for subsequent learning of more flexible clustering algorithms (e.g., DBSCAN).</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=11-principal-component-analysis-pca>11. Principal Component Analysis (PCA)<a href=#11-principal-component-analysis-pca class=hash-link aria-label="Direct link to 11. Principal Component Analysis (PCA)" title="Direct link to 11. Principal Component Analysis (PCA)" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-2>Key Knowledge Points<a href=#key-knowledge-points-2 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Dimensionality Reduction</strong> technique: Projecting high-dimensional data into a lower-dimensional space, preserving maximum variance.</li>
+<li class="">Steps: Standardization → Calculate covariance matrix → Find eigenvalues and eigenvectors → Sort by eigenvalues in descending order → Select the top k principal components → Transform data.</li>
+<li class=""><strong>Eigenvalues</strong> represent the amount of variance explained by each principal component, and <strong>eigenvectors</strong> represent the direction of the principal components.</li>
+<li class="">Choosing the number of components to retain: Typically, choose the number of components whose cumulative explained variance reaches 95%.</li>
+<li class="">Assumptions: Linear relationships and significant correlations exist between features, sensitive to feature scales.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-9>Understanding and Insights<a href=#understanding-and-insights-9 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The core idea of PCA is to <strong>find the direction of greatest data variance</strong>—the direction with the largest variance carries the most information, while the direction with the smallest variance is often noise and can be discarded.</li>
+<li class="">Here, the seemingly abstract eigenvalues/eigenvectors from section 2 finally have a practical use: eigenvectors define the direction of the principal components, and eigenvalues measure the amount of information in that direction.</li>
+<li class="">The cost of PCA is <strong>reduced interpretability</strong>: Original features have clear meanings (e.g., "age", "income"), but principal components are linear combinations of original features and no longer have intuitive meanings.</li>
+<li class="">The 95% variance threshold is a rule of thumb, not a hard rule, and may need to be adjusted for specific scenarios.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-10>Practical Takeaways<a href=#practical-takeaways-10 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the core motivations for dimensionality reduction: reducing computational cost, eliminating noise, and enabling visualization of high-dimensional data.</li>
+<li class="">Connected eigenvalues/eigenvectors from linear algebra with practical data analysis techniques.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=12-anomaly-detection>12. Anomaly Detection<a href=#12-anomaly-detection class=hash-link aria-label="Direct link to 12. Anomaly Detection" title="Direct link to 12. Anomaly Detection" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-3>Key Knowledge Points<a href=#key-knowledge-points-3 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class="">Identify data points that significantly deviate from normal behavior, three types of anomalies:<!-- -->
+<ul>
+<li class=""><strong>Point Anomalies</strong>: single anomalous data points</li>
+<li class=""><strong>Contextual Anomalies</strong>: anomalous in a specific context (e.g., 30°C in winter)</li>
+<li class=""><strong>Collective Anomalies</strong>: a group of data points that are anomalous as a whole</li>
+</ul>
+</li>
+<li class="">Detection methods are divided into three main categories:<!-- -->
+<ul>
+<li class=""><strong>Statistical Methods</strong>: assume normal data follows a specific distribution (e.g., Gaussian), use z-score etc. to identify outliers</li>
+<li class=""><strong>Clustering Methods</strong>: points that do not belong to any cluster or belong to sparse clusters are considered anomalies (e.g., K-Means)</li>
+<li class=""><strong>Machine Learning Methods</strong>:<!-- -->
+<ul>
+<li class=""><strong>One-Class SVM</strong>: learns a boundary that encloses normal data</li>
+<li class=""><strong>Isolation Forest</strong>: isolates anomalies through random partitioning; the shorter the path, the more likely it is an anomaly</li>
+<li class=""><strong>Local Outlier Factor (LOF)</strong>: compares the local density of a data point with its neighbors</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-10>Understanding and Insights<a href=#understanding-and-insights-10 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The concept of contextual anomalies is profound: <strong>the same data value can be normal or anomalous in different contexts</strong>—30°C is normal in summer, but anomalous in winter. This means anomaly detection models need to understand the contextual definition of "normal".</li>
+<li class="">The unique value of anomaly detection in the security domain: attack methods are constantly evolving, making it impossible to enumerate all attack patterns (a limitation of supervised learning), but one can define "what is normal" and then detect deviations.</li>
+<li class="">The idea behind Isolation Forest is very intuitive: anomalies, being different, are easily "isolated" during random partitioning—much like a person behaving strangely in a crowd is easily noticed.</li>
+<li class="">Different methods are suitable for different scenarios: statistical methods are simple but have strong assumptions, Isolation Forest is suitable for high-dimensional data, and LOF is suitable for data with uneven density.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-11>Practical Takeaways<a href=#practical-takeaways-11 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Mastered a classification framework for three types of anomalies, and can choose appropriate detection strategies based on specific scenarios.</li>
+<li class="">Developed an awareness of anomaly detection applications in cybersecurity—the core idea of Intrusion Detection Systems (IDS) is precisely "deviation from normal is suspicious".</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=13-reinforcement-learning-algorithms>13. Reinforcement Learning Algorithms<a href=#13-reinforcement-learning-algorithms class=hash-link aria-label="Direct link to 13. Reinforcement Learning Algorithms" title="Direct link to 13. Reinforcement Learning Algorithms" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-4>Key Knowledge Points<a href=#key-knowledge-points-4 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class="">The agent learns the optimal strategy by interacting with the environment, based on reward and punishment feedback.</li>
+<li class="">Categorized into <strong>Model-based RL</strong> and <strong>Model-free RL</strong>.</li>
+<li class="">Core Concepts:<!-- -->
+<ul>
+<li class=""><strong>Agent / Environment / State / Action / Reward</strong>: The five basic elements of RL</li>
+<li class=""><strong>Policy</strong>: A mapping strategy from states to actions</li>
+<li class=""><strong>Value Function</strong>: Estimates the long-term value of a state/action (State-value / Action-value)</li>
+<li class=""><strong>Discount Factor（γ）</strong>: Controls the degree of importance given to future rewards, between 0 and 1</li>
+<li class=""><strong>Episodic vs Continuous Tasks</strong>: Tasks with a terminal state vs tasks without a terminal state</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-11>Understanding and Insights<a href=#understanding-and-insights-11 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The fundamental difference between RL and supervised/unsupervised learning: <strong>No pre-existing dataset</strong>—the agent must "generate" its own training data by interacting with the environment, which means data quality depends on the policy itself, creating a chicken-and-egg dilemma.</li>
+<li class=""><strong>The discount factor γ is a philosophical parameter</strong>: When γ is close to 1, the agent has "foresight" and values long-term rewards; when γ is close to 0, the agent is "short-sighted" and only considers immediate rewards. Different tasks require different time horizons.</li>
+<li class="">Model-based vs Model-free Trade-offs: Model-based can "imagine" results before acting (efficient but the model might be inaccurate), while Model-free must interact with the real environment (reliable but sample inefficient).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-12>Practical Takeaways<a href=#practical-takeaways-12 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the five-element framework of RL, and can map any interactive decision-making problem into the Agent/Environment/State/Action/Reward structure.</li>
+<li class="">Established connections between RL and games, cybersecurity offense and defense (e.g., automated penetration testing).</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=14-q-learning>14. Q-Learning<a href=#14-q-learning class=hash-link aria-label="Direct link to 14. Q-Learning" title="Direct link to 14. Q-Learning" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-concepts-3>Key Concepts<a href=#key-concepts-3 class=hash-link aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Model-free</strong> RL algorithms learn optimal policies by estimating <strong>Q-values</strong> (expected cumulative reward for state-action pairs).</li>
+<li class=""><strong>Q-table</strong>: stores Q-values for all state-action pairs.</li>
+<li class="">Update formula (Bellman Equation): <code>Q(s,a) = Q(s,a) + α[r + γ·max Q(s',a') - Q(s,a)]</code></li>
+<li class="">Belongs to <strong>off-policy</strong> algorithms: updates using the <strong>maximum</strong> Q-value of the next state, independent of the current policy.</li>
+<li class=""><strong>Exploration-Exploitation Trade-off</strong>: Epsilon-Greedy strategy—explores randomly with probability ε, and selects the optimal action with probability 1-ε.</li>
+<li class="">Assumptions: The environment satisfies the Markov property, and environment dynamics are stationary.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-12>Understanding and Insights<a href=#understanding-and-insights-12 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Meaning of Off-policy</strong>: Q-Learning updates using <code>max Q(s',a')</code>, meaning it assumes the optimal action will be chosen next—but in actual execution, a random action might be chosen due to ε-greedy. The "learned policy" and the "used policy" are separate; this is "off-policy." In contrast, SARSA updates using the actually executed action, "learning what it uses," which is "on-policy."</li>
+<li class=""><strong>The exploration-exploitation dilemma is a fundamental challenge in RL</strong>: Over-exploitation (exploit) leads to local optima, never discovering better policies; over-exploration (explore) wastes significant resources on inefficient actions. ε-greedy is the simplest balancing strategy, but far from optimal.</li>
+<li class="">Q-table methods are only suitable for problems with finite state-action spaces. When the state space is huge or continuous (e.g., images as states), function approximation (e.g., Deep Q-Networks DQN) is needed to replace the Q-table.</li>
+<li class="">The essence of the Bellman Equation is <strong>to update the estimate of the current value using the estimate of future values</strong>—this is a "bootstrapping" idea.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-13>Practical Takeaways<a href=#practical-takeaways-13 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Mastered the complete process of Q-Learning as the most classic RL algorithm: Initialize Q-table → Select action → Get reward → Update Q-value → Repeat</li>
+<li class="">Understood the difference between off-policy and on-policy, laying the foundation for comparing with SARSA.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=15-sarsa-state-action-reward-state-action>15. SARSA (State-Action-Reward-State-Action)<a href=#15-sarsa-state-action-reward-state-action class=hash-link aria-label="Direct link to 15. SARSA (State-Action-Reward-State-Action)" title="Direct link to 15. SARSA (State-Action-Reward-State-Action)" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-5>Key Knowledge Points<a href=#key-knowledge-points-5 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Model-free on-policy</strong> RL algorithm, differing from Q-Learning by using the Q-value of the <strong>actually executed next action</strong> for updates.</li>
+<li class="">Update Formula: <code>Q(s,a) ← Q(s,a) + α(r + γ·Q(s',a') - Q(s,a))</code></li>
+<li class="">On-policy characteristic makes SARSA more conservative and safer, suitable for scenarios with high safety requirements.</li>
+<li class="">Exploration Strategies: Epsilon-Greedy and Softmax</li>
+<li class="">Key Parameter Tuning: Learning rate α (update step size) and discount factor γ (trade-off between immediate and future rewards)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-13>Understanding and Insights<a href=#understanding-and-insights-13 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The formulas for SARSA and Q-Learning are almost identical. The only difference is that Q-Learning uses <code>max Q(s',a')</code> (value of the optimal action) while SARSA uses <code>Q(s',a')</code> (value of the actually executed action). This subtle difference leads to significant behavioral distinctions.</li>
+<li class=""><strong>Source of SARSA's Conservatism</strong>: Because SARSA incorporates the 'pits' encountered during exploration into its updates, the policy it learns actively avoids dangerous areas. Q-Learning, on the other hand, assumes optimal action selection in the future, potentially learning a more aggressive but theoretically superior policy.</li>
+<li class="">Classic Case: "Cliff Walking": SARSA learns to take a longer route to avoid the cliff edge, while Q-Learning learns to walk along the cliff edge for the shortest path—the latter is theoretically optimal but frequently falls during exploration.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-14>Practical Takeaways<a href=#practical-takeaways-14 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Through the comparison of Q-Learning and SARSA, deepened the understanding of the on-policy/off-policy distinction.</li>
+<li class="">Recognized that in safety-critical scenarios (e.g., robot control, autonomous driving), conservative strategies may have more practical value than theoretically optimal strategies.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=16-introduction-to-deep-learning>16. Introduction to Deep Learning<a href=#16-introduction-to-deep-learning class=hash-link aria-label="Direct link to 16. Introduction to Deep Learning" title="Direct link to 16. Introduction to Deep Learning" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-concepts-4>Key Concepts<a href=#key-concepts-4 class=hash-link aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate=no>​</a></h3>
+<ul>
+<li class="">Deep learning uses multi-layered neural networks to automatically learn features from raw data, eliminating the need for manual feature engineering.</li>
+<li class="">Core Components:<!-- -->
+<ul>
+<li class=""><strong>Artificial Neural Networks (ANN)</strong>: Composed of neurons and weighted connections</li>
+<li class=""><strong>Layer Structure</strong>: Input Layer → Hidden Layers (multiple) → Output Layer</li>
+<li class=""><strong>Activation Functions</strong>: Introduce non-linearity – Sigmoid, ReLU, Tanh</li>
+<li class=""><strong>Backpropagation</strong>: Calculates the gradient of the loss function with respect to weights, propagating errors layer by layer</li>
+<li class=""><strong>Loss Functions</strong>: Measure the difference between predictions and true values (MSE / Cross-Entropy)</li>
+<li class=""><strong>Optimizers</strong>: SGD, Adam, RMSprop, used to update weights</li>
+<li class=""><strong>Hyperparameters</strong>: Parameters set before training, such as learning rate, number of layers, number of neurons per layer</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-14>Understanding and Insights<a href=#understanding-and-insights-14 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>The core motivation of deep learning: automated feature engineering</strong>. Traditional ML requires manual feature design (e.g., extracting edge histograms from images), while DL directly learns features from raw data (pixel values). This frees up domain experts but also turns the model into a "black box".</li>
+<li class="">The necessity of activation functions introducing non-linearity: Without activation functions, no matter how many layers are stacked, the entire network would still be equivalent to a linear transformation – making multiple layers meaningless. Non-linearity is the source of deep networks' expressive power.</li>
+<li class=""><strong>Backpropagation + Gradient Descent</strong> is the core training loop of DL: Forward propagation calculates predictions → Loss function calculates error → Backpropagation calculates gradients → Optimizer updates weights. Understanding this loop means understanding the full picture of DL training.</li>
+<li class="">Hyperparameter tuning still resembles "art" more than "science" – there's no universal optimal configuration, largely relying on experience and experimentation.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-15>Practical Takeaways<a href=#practical-takeaways-15 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood that the watershed between traditional ML and deep learning lies in "whether manual feature engineering is required"—a crucial criterion for choosing a method.</li>
+<li class="">Established a complete mental model of the DL training loop: Forward Propagation → Calculate Loss → Backpropagation → Weight Update.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=17-perceptrons>17. Perceptrons<a href=#17-perceptrons class=hash-link aria-label="Direct link to 17. Perceptrons" title="Direct link to 17. Perceptrons" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-6>Key Knowledge Points<a href=#key-knowledge-points-6 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class="">Basic building blocks of neural networks: Input × Weights → Sum + Bias → Activation Function → Output.</li>
+<li class="">Using a step function as the activation function, the output is a binary value (0 or 1).</li>
+<li class=""><strong>Limitations</strong>: A single-layer perceptron can only learn linearly separable decision boundaries and cannot solve the XOR problem.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-15>Understanding and Insights<a href=#understanding-and-insights-15 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The perceptron is <strong>the smallest unit for understanding neural networks</strong>—all complex deep networks are built by stacking this basic structure.</li>
+<li class="">The significance of the XOR problem goes far beyond a mathematical toy: it almost "killed" the entire field of neural network research in 1969 (the AI winter), until the invention of multi-layer networks and backpropagation solved this problem.</li>
+<li class="">The evolution from perceptrons to neurons: replacing non-differentiable step functions with continuously differentiable activation functions (Sigmoid, ReLU), making backpropagation possible.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-16>Practical Takeaways<a href=#practical-takeaways-16 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the lowest-level computational logic of neural networks: weighted sum + non-linear transformation.</li>
+<li class="">Through the XOR problem, recognized the fundamental limitations of single-layer networks, and understood why "depth" is needed.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=18-neural-networks>18. Neural Networks<a href=#18-neural-networks class=hash-link aria-label="Direct link to 18. Neural Networks" title="Direct link to 18. Neural Networks" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-7>Key Knowledge Points<a href=#key-knowledge-points-7 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Multi-Layer Perceptron (MLP)</strong> overcomes the limitations of single-layer perceptrons by introducing hidden layers.</li>
+<li class="">Activation Functions: Sigmoid, ReLU, Tanh, Softmax</li>
+<li class="">Training Process:<!-- -->
+<ul>
+<li class=""><strong>Forward Propagation</strong>: Data is computed layer by layer from the input layer to the output layer</li>
+<li class=""><strong>Backward Propagation</strong>: Errors are propagated back layer by layer from the output layer, calculating the gradients of weights for each layer</li>
+<li class=""><strong>Gradient Descent</strong>: Weights are updated along the negative gradient direction, with the learning rate controlling the step size</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-16>Understanding and Insights<a href=#understanding-and-insights-16 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">MLP is a bridge from perceptrons to deep learning: Theoretically, an MLP with a sufficiently wide hidden layer can approximate any continuous function (Universal Approximation Theorem), but in practice, "deep and narrow" is often more efficient than "shallow and wide"</li>
+<li class="">Reasons why ReLU replaced Sigmoid as the mainstream activation function: Sigmoid's gradient approaches 0 at both ends (saturation region), leading to vanishing gradients in deep networks; ReLU's gradient is consistently 1 in the positive region, alleviating this problem</li>
+<li class="">Design of Softmax as a multi-class classification output layer: It transforms an arbitrary real-valued vector into a probability distribution (where all outputs sum to 1), and is a generalization of the logistic regression Sigmoid function for multi-class scenarios</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-17>Practical Takeaways<a href=#practical-takeaways-17 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Fully understood the neural network training loop: Forward Propagation → Calculate Loss → Backward Propagation → Gradient Descent to update weights</li>
+<li class="">Mastered the principles for choosing different activation functions: ReLU preferred for hidden layers, Sigmoid for binary classification output, Softmax for multi-class classification output</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=19-convolutional-neural-networks>19. Convolutional Neural Networks<a href=#19-convolutional-neural-networks class=hash-link aria-label="Direct link to 19. Convolutional Neural Networks" title="Direct link to 19. Convolutional Neural Networks" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-8>Key Knowledge Points<a href=#key-knowledge-points-8 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class="">Neural networks designed specifically for grid-like data (images), with three core layers:<!-- -->
+<ul>
+<li class=""><strong>Convolutional Layer</strong>: Uses learnable filters to extract local features (edges, textures, shapes)</li>
+<li class=""><strong>Pooling Layer</strong>: Downsamples to reduce dimensionality (Max Pooling / Average Pooling)</li>
+<li class=""><strong>Fully Connected Layer</strong>: Performs final classification or regression based on the extracted features</li>
+</ul>
+</li>
+<li class=""><strong>Hierarchical Feature Learning</strong>: shallow layers detect edges → middle layers recognize shapes → deep layers identify objects</li>
+<li class="">Assumptions: grid-like data structure, spatial hierarchy of features, feature locality and stationarity</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-17>Understanding and Insights<a href=#understanding-and-insights-17 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Hierarchical feature learning (edges → shapes → objects) is the core insight of CNNs</strong>—the network doesn't recognize "cats" in one go, but rather builds increasingly abstract representations layer by layer. This is strikingly similar to the hierarchical processing mechanism of the human visual system.</li>
+<li class="">CNNs' advantage over MLPs in image processing comes from two key inductive biases: <strong>Locality</strong> (features are local, and convolutional kernels only look at local regions) and <strong>Translation Invariance</strong> (the same filter shares weights across the entire image, detecting "cats" regardless of their position in the picture)</li>
+<li class="">Weight sharing significantly reduces the number of parameters: a 3x3 convolutional kernel has only 9 parameters but scans the entire image—if a fully connected layer were used to process a 256x256 image, the number of parameters would explode.</li>
+<li class="">Pooling layers not only reduce dimensionality, but also provide a degree of <strong>positional invariance</strong>—objects moving a few pixels won't affect detection results.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-18>Practical Takeaways<a href=#practical-takeaways-18 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood why CNNs achieved revolutionary success in computer vision—the triple design of hierarchical feature learning + weight sharing + local receptive fields.</li>
+<li class="">Mastered the typical architectural pattern of CNNs: alternately stacking convolutional and pooling layers, finally connecting to fully connected layers for output.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=20-recurrent-neural-networks>20. Recurrent Neural Networks<a href=#20-recurrent-neural-networks class=hash-link aria-label="Direct link to 20. Recurrent Neural Networks" title="Direct link to 20. Recurrent Neural Networks" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-9>Key Knowledge Points<a href=#key-knowledge-points-9 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class="">Designed specifically for sequential data, maintaining "memory" through recurrent connections, receiving current input and previous hidden state at each time step.</li>
+<li class=""><strong>Vanishing Gradient Problem</strong>: gradients exponentially decay in long sequences, making it difficult to learn long-term dependencies.</li>
+<li class="">Solutions:<!-- -->
+<ul>
+<li class=""><strong>LSTM</strong>: introduces a memory cell and three gates (input gate, forget gate, output gate), selectively remembering and forgetting.</li>
+<li class=""><strong>GRU</strong>: a simplified version of LSTM, with only two gates (update gate, reset gate), and higher efficiency.</li>
+</ul>
+</li>
+<li class=""><strong>Bidirectional RNN</strong>: Processes sequences from both forward and backward directions simultaneously, capturing the full context</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-18>Understanding and Insights<a href=#understanding-and-insights-18 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>The vanishing gradient problem is key to understanding the motivation behind LSTM/GRU invention</strong>: In standard RNNs, gradients are repeatedly multiplied by the weight matrix at each time step. If weights &lt; 1, gradients exponentially decay (vanish); if weights > 1, gradients exponentially grow (explode). Vanishing gradients mean the network cannot learn long-range dependencies—for example, the influence of a subject at the beginning of a sentence on the tense of a verb at the end</li>
+<li class=""><strong>LSTM's gating mechanism is a form of "selective memory"</strong>: The forget gate decides what old information to discard, the input gate decides what new information to write, and the output gate decides what to expose to the next step. Information in the memory cell can pass unimpeded along a "highway," thereby solving the vanishing gradient problem</li>
+<li class="">However, the sequential processing nature of RNN/LSTM (which must proceed step by step) limits their parallelization capabilities, setting the stage for the emergence of the Transformer</li>
+<li class="">The intuition behind Bidirectional RNNs: Understanding the meaning of a word often requires looking at both its preceding and following context. For example, in "I am at the bank ______"—the meaning of "bank" can only be determined after seeing "deposit money" or "fishing"</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-19>Practical Takeaways<a href=#practical-takeaways-19 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the technical implementation of "memory" in sequence modeling, and why vanilla RNNs cannot handle long sequences</li>
+<li class="">Established the technical evolution roadmap from RNN → LSTM/GRU → Transformer: each step aimed at solving the bottlenecks of the previous one</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=21-introduction-to-generative-ai>21. Introduction to Generative AI<a href=#21-introduction-to-generative-ai class=hash-link aria-label="Direct link to 21. Introduction to Generative AI" title="Direct link to 21. Introduction to Generative AI" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-concepts-5>Key Concepts<a href=#key-concepts-5 class=hash-link aria-label="Direct link to Key Concepts" title="Direct link to Key Concepts" translate=no>​</a></h3>
+<ul>
+<li class="">Generative AI focuses on creating new content (text, images, music, code), rather than merely analyzing or classifying</li>
+<li class="">Main Model Types:<!-- -->
+<ul>
+<li class=""><strong>GAN</strong>: Generator and discriminator trained adversarially</li>
+<li class=""><strong>VAE</strong>: Learns compressed representations of data for generation</li>
+<li class=""><strong>Autoregressive Models</strong>: Generate elements sequentially, one by one</li>
+<li class=""><strong>Diffusion Models</strong>: Generate by progressively denoising from noise</li>
+</ul>
+</li>
+<li class="">Key Concepts: Latent Space, Sampling, Mode Collapse, Overfitting</li>
+<li class="">Evaluation Metrics: IS, FID, BLEU</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-19>Understanding and Insights<a href=#understanding-and-insights-19 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">Essential Difference between Generative AI and Discriminative AI: Discriminative models learn P(y|x) (predicting categories given input), while generative models learn P(x) (learning the distribution of the data itself, thereby enabling the generation of new samples). The latter is significantly more difficult than the former</li>
+<li class="">GAN's adversarial training idea is extremely elegant: the generator and discriminator are adversaries—the generator attempts to create fakes that are indistinguishable from real ones, and the discriminator attempts to expose them. Both progress together in this game. However, this also leads to training instability (e.g., mode collapse issues)</li>
+<li class="">Latent space is a core concept for understanding all generative models: It is a compressed, continuous representation space where similar data points are closer together. The generation process involves sampling from the latent space and then "decoding"</li>
+<li class="">Evaluating generative models is much more difficult than evaluating classification models—there is no single standard for the "quality" of generated content, and IS/FID/BLEU are merely proxy metrics</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-20>Practical Takeaways<a href=#practical-takeaways-20 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Gained an overview of the four major types of generative AI models and understood their respective generation paradigms</li>
+<li class="">Recognized the double-edged sword effect of generative AI in the security domain: It can be used to generate adversarial samples for attacks, and also for data augmentation and synthesizing training data</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=22-large-language-models>22. Large Language Models<a href=#22-large-language-models class=hash-link aria-label="Direct link to 22. Large Language Models" title="Direct link to 22. Large Language Models" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-points-3>Key Points<a href=#key-points-3 class=hash-link aria-label="Direct link to Key Points" title="Direct link to Key Points" translate=no>​</a></h3>
+<ul>
+<li class="">Large-scale text generation models based on <strong>Transformer architecture</strong>, with parameters reaching billions or even trillions</li>
+<li class="">Three Major Characteristics: Large-scale parameters, Few-shot learning, Contextual understanding</li>
+<li class="">Core Technology Stack:<!-- -->
+<ul>
+<li class=""><strong>Tokenization</strong>: splitting text into tokens</li>
+<li class=""><strong>Embeddings</strong>: mapping tokens to high-dimensional vectors that capture semantics</li>
+<li class=""><strong>Encoder / Decoder</strong>: Encoder understands input, decoder generates output</li>
+<li class=""><strong>Self-Attention</strong>: Calculates attention scores between words, capturing long-range dependencies</li>
+</ul>
+</li>
+<li class="">Training Method: Unsupervised learning based on massive text data, optimizing parameters using gradient descent</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-20>Understanding and Insights<a href=#understanding-and-insights-20 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Self-Attention mechanism (Self-Attention) is the key breakthrough for Transformer to defeat RNN</strong>: RNN must process sequences sequentially (1st word → 2nd → ... → nth word), whereas self-attention allows each word to directly interact with any other word in the sequence, without distance limitations. This not only captures long-range dependencies but also allows for large-scale parallel computation</li>
+<li class="">Intuition behind Self-Attention: When processing "The cat sat on the mat because it was tired", "it" needs to attend to "cat" (not "mat") to determine the anaphoric relationship. Attention scores are precisely the weights that measure the relevance between words</li>
+<li class=""><strong>Scaling Laws</strong> is another profound discovery in LLMs: Model capabilities predictably improve with increases in parameter count, data volume, and computational resources. This explains why "bigger is better" has become the main theme in LLM development</li>
+<li class="">Few-shot learning means that LLMs, through pre-training, have already "seen" massive patterns, and can adapt to new tasks with just a few examples during inference—something traditional ML cannot achieve</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-21>Practical Takeaways<a href=#practical-takeaways-21 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the technical reasons why the Transformer architecture replaced RNNs: the dual advantages of parallelization + long-range dependency modeling</li>
+<li class="">Mastered the full technical stack of LLMs: Tokenization → Embedding → Self-Attention → Encoder/Decoder, laying the foundation for understanding and using LLM tools</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=23-diffusion-models>23. Diffusion Models<a href=#23-diffusion-models class=hash-link aria-label="Direct link to 23. Diffusion Models" title="Direct link to 23. Diffusion Models" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=key-knowledge-points-10>Key Knowledge Points<a href=#key-knowledge-points-10 class=hash-link aria-label="Direct link to Key Knowledge Points" title="Direct link to Key Knowledge Points" translate=no>​</a></h3>
+<ul>
+<li class="">Learns data distribution through a "noise addition → denoising" process, generating high-quality images</li>
+<li class=""><strong>Forward Process</strong>: Gradually adds noise to data until it becomes pure noise</li>
+<li class=""><strong>Reverse Process</strong>: Trains a denoising network to predict and remove noise, gradually recovering data from pure noise</li>
+<li class=""><strong>Text-Guided Generation</strong>: Uses Transformer / CLIP to encode text into latent representations, conditioning the denoising process</li>
+<li class="">Key Components: Noise Scheduling (controlling the amount of noise added at each step), Denoising Network (CNN or Transformer)</li>
+<li class="">Assumptions: Markov Property, Static Data Distribution, Smoothness of Data Distribution</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=understanding-and-insights-21>Understanding and Insights<a href=#understanding-and-insights-21 class=hash-link aria-label="Direct link to Understanding and Insights" title="Direct link to Understanding and Insights" translate=no>​</a></h3>
+<ul>
+<li class="">The intuition behind diffusion models is quite elegant: <strong>Easy to destroy, hard to repair</strong>—forward noise addition is simple (adding a small amount of Gaussian noise at each step), but learning to denoise in reverse requires the network to truly understand the data's structure. This bears a striking resemblance to the second law of thermodynamics in physics (entropy increase is easy, entropy decrease is difficult).</li>
+<li class="">Compared to GANs, diffusion models' training is more stable (without the instability of adversarial training) and generates higher quality results, but at the cost of slower inference speed—requiring multi-step iterative denoising.</li>
+<li class="">Text-guided generation connects the visual and language modalities: The CLIP model established a shared semantic space for text and images, making it possible to "describe desired images with text".</li>
+<li class="">Diffusion models are the mainstream method for current image generation (the foundation of Stable Diffusion, DALL-E, Midjourney), replacing the previous dominance of GANs.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=practical-takeaways-22>Practical Takeaways<a href=#practical-takeaways-22 class=hash-link aria-label="Direct link to Practical Takeaways" title="Direct link to Practical Takeaways" translate=no>​</a></h3>
+<ul>
+<li class="">Understood the core idea of diffusion models' "noise-addition-denoising" and grasped the basic principles of current image generation technology.</li>
+<li class="">Recognized the technical foundation of multimodal AI: connecting different types of data through a shared latent space.</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=24-skills-assessment>24. Skills Assessment<a href=#24-skills-assessment class=hash-link aria-label="Direct link to 24. Skills Assessment" title="Direct link to 24. Skills Assessment" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=exercise-solutions>Exercise Solutions<a href=#exercise-solutions class=hash-link aria-label="Direct link to Exercise Solutions" title="Direct link to Exercise Solutions" translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q1-which-probabilistic-algorithm-based-on-bayes-theorem-is-commonly-used-for-classification-tasks-such-as-spam-filtering-and-sentiment-analysis-and-is-known-for-its-simplicity-efficiency-and-good-performance-in-real-world-scenarios>Q1: Which probabilistic algorithm, based on Bayes' theorem, is commonly used for classification tasks such as spam filtering and sentiment analysis, and is known for its simplicity, efficiency, and good performance in real-world scenarios?<a href=#q1-which-probabilistic-algorithm-based-on-bayes-theorem-is-commonly-used-for-classification-tasks-such-as-spam-filtering-and-sentiment-analysis-and-is-known-for-its-simplicity-efficiency-and-good-performance-in-real-world-scenarios class=hash-link aria-label="Direct link to Q1: Which probabilistic algorithm, based on Bayes' theorem, is commonly used for classification tasks such as spam filtering and sentiment analysis, and is known for its simplicity, efficiency, and good performance in real-world scenarios?" title="Direct link to Q1: Which probabilistic algorithm, based on Bayes' theorem, is commonly used for classification tasks such as spam filtering and sentiment analysis, and is known for its simplicity, efficiency, and good performance in real-world scenarios?" translate=no>​</a></h4>
+<p><strong>Solution Approach:</strong></p>
+<p>The problem describes a probabilistic classification algorithm based on Bayes' theorem, known for its simplicity and efficiency, and widely used in spam filtering and sentiment analysis. This is precisely the Naive Bayes introduced in Section 7.</p>
+<p><strong>Answer:</strong> <code>Naive Bayes</code></p>
+<hr/>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q2-what-dimensionality-reduction-technique-transforms-high-dimensional-data-into-a-lower-dimensional-representation-while-preserving-as-much-original-information-as-possible-and-is-widely-used-for-feature-extraction-data-visualization-and-noise-reduction>Q2: What dimensionality reduction technique transforms high-dimensional data into a lower-dimensional representation while preserving as much original information as possible, and is widely used for feature extraction, data visualization, and noise reduction?<a href=#q2-what-dimensionality-reduction-technique-transforms-high-dimensional-data-into-a-lower-dimensional-representation-while-preserving-as-much-original-information-as-possible-and-is-widely-used-for-feature-extraction-data-visualization-and-noise-reduction class=hash-link aria-label="Direct link to Q2: What dimensionality reduction technique transforms high-dimensional data into a lower-dimensional representation while preserving as much original information as possible, and is widely used for feature extraction, data visualization, and noise reduction?" title="Direct link to Q2: What dimensionality reduction technique transforms high-dimensional data into a lower-dimensional representation while preserving as much original information as possible, and is widely used for feature extraction, data visualization, and noise reduction?" translate=no>​</a></h4>
+<p><strong>Solution Approach:</strong></p>
+<p>The problem describes a dimensionality reduction technique that transforms high-dimensional data into a lower-dimensional representation, widely used for feature extraction and data visualization. This is precisely the PCA introduced in Section 11.</p>
+<p><strong>Answer:</strong> <code>Principal Component Analysis</code></p>
+<hr/>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q3-what-model-free-reinforcement-learning-algorithm-learns-an-optimal-policy-by-estimating-the-q-value-which-represents-the-expected-cumulative-reward-an-agent-can-obtain-by-taking-a-specific-action-in-a-given-state-and-following-the-optimal-policy-afterward-this-algorithm-learns-directly-through-trial-and-error-interacting-with-the-environment-and-observing-the-outcomes>Q3: What model-free reinforcement learning algorithm learns an optimal policy by estimating the Q-value, which represents the expected cumulative reward an agent can obtain by taking a specific action in a given state and following the optimal policy afterward? This algorithm learns directly through trial and error, interacting with the environment and observing the outcomes.<a href=#q3-what-model-free-reinforcement-learning-algorithm-learns-an-optimal-policy-by-estimating-the-q-value-which-represents-the-expected-cumulative-reward-an-agent-can-obtain-by-taking-a-specific-action-in-a-given-state-and-following-the-optimal-policy-afterward-this-algorithm-learns-directly-through-trial-and-error-interacting-with-the-environment-and-observing-the-outcomes class=hash-link aria-label="Direct link to Q3: What model-free reinforcement learning algorithm learns an optimal policy by estimating the Q-value, which represents the expected cumulative reward an agent can obtain by taking a specific action in a given state and following the optimal policy afterward? This algorithm learns directly through trial and error, interacting with the environment and observing the outcomes." title="Direct link to Q3: What model-free reinforcement learning algorithm learns an optimal policy by estimating the Q-value, which represents the expected cumulative reward an agent can obtain by taking a specific action in a given state and following the optimal policy afterward? This algorithm learns directly through trial and error, interacting with the environment and observing the outcomes." translate=no>​</a></h4>
+<p><strong>Solution Idea:</strong></p>
+<p>The keywords of the problem are "model-free", "Q-value", and "expected cumulative reward". This is exactly the Q-Learning introduced in Section 14, which learns the optimal policy by estimating the expected cumulative reward for each state-action pair using a Q-table.</p>
+<p><strong>Answer:</strong> <code>Q-Learning</code></p>
+<hr/>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q4-what-is-the-fundamental-computational-unit-in-neural-networks-that-receives-inputs-processes-them-using-weights-and-a-bias-and-applies-an-activation-function-to-produce-an-output-unlike-the-perceptron-which-uses-a-step-function-for-binary-classification-this-unit-can-use-various-activation-functions-such-as-the-sigmoid-relu-and-tanh>Q4: What is the fundamental computational unit in neural networks that receives inputs, processes them using weights and a bias, and applies an activation function to produce an output? Unlike the perceptron, which uses a step function for binary classification, this unit can use various activation functions such as the sigmoid, ReLU, and tanh.<a href=#q4-what-is-the-fundamental-computational-unit-in-neural-networks-that-receives-inputs-processes-them-using-weights-and-a-bias-and-applies-an-activation-function-to-produce-an-output-unlike-the-perceptron-which-uses-a-step-function-for-binary-classification-this-unit-can-use-various-activation-functions-such-as-the-sigmoid-relu-and-tanh class=hash-link aria-label="Direct link to Q4: What is the fundamental computational unit in neural networks that receives inputs, processes them using weights and a bias, and applies an activation function to produce an output? Unlike the perceptron, which uses a step function for binary classification, this unit can use various activation functions such as the sigmoid, ReLU, and tanh." title="Direct link to Q4: What is the fundamental computational unit in neural networks that receives inputs, processes them using weights and a bias, and applies an activation function to produce an output? Unlike the perceptron, which uses a step function for binary classification, this unit can use various activation functions such as the sigmoid, ReLU, and tanh." translate=no>​</a></h4>
+<p><strong>Solution Idea:</strong></p>
+<p>The question asks about the basic computational unit in a neural network, which receives input, processes it using weights and biases, and applies an activation function to produce output. Unlike a perceptron, it can use various activation functions (Sigmoid, ReLU, Tanh). This is the Neuron defined in Section 18.</p>
+<p><strong>Answer:</strong> <code>Neuron</code></p>
+<hr/>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q5-what-deep-learning-architecture-known-for-its-ability-to-process-sequential-data-like-text-by-capturing-long-range-dependencies-between-words-through-self-attention-forms-the-basis-of-large-language-models-llms-that-can-perform-tasks-such-as-translation-summarization-question-answering-and-creative-writing>Q5: What deep learning architecture, known for its ability to process sequential data like text by capturing long-range dependencies between words through self-attention, forms the basis of large language models (LLMs) that can perform tasks such as translation, summarization, question answering, and creative writing?<a href=#q5-what-deep-learning-architecture-known-for-its-ability-to-process-sequential-data-like-text-by-capturing-long-range-dependencies-between-words-through-self-attention-forms-the-basis-of-large-language-models-llms-that-can-perform-tasks-such-as-translation-summarization-question-answering-and-creative-writing class=hash-link aria-label="Direct link to Q5: What deep learning architecture, known for its ability to process sequential data like text by capturing long-range dependencies between words through self-attention, forms the basis of large language models (LLMs) that can perform tasks such as translation, summarization, question answering, and creative writing?" title="Direct link to Q5: What deep learning architecture, known for its ability to process sequential data like text by capturing long-range dependencies between words through self-attention, forms the basis of large language models (LLMs) that can perform tasks such as translation, summarization, question answering, and creative writing?" translate=no>​</a></h4>
+<p><strong>Solution Idea:</strong></p>
+<p>The problem describes a deep learning architecture that captures long-range dependencies and processes sequential data through a self-attention mechanism, and is the foundation of LLMs. This is exactly the Transformer architecture introduced in Section 22.</p>
+<p><strong>Answer:</strong> <code>Transformer</code></p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=answer-key>Answer Key<a href=#answer-key class=hash-link aria-label="Direct link to Answer Key" title="Direct link to Answer Key" translate=no>​</a></h2>
+<table><thead><tr><th>Section<th>Question Number<th>Answer<tbody><tr><td>24 - Skills Assessment<td>Q1<td><code>Naive Bayes</code><tr><td>24 - Skills Assessment<td>Q2<td><code>Principal Component Analysis</code><tr><td>24 - Skills Assessment<td>Q3<td><code>Q-Learning</code><tr><td>24 - Skills Assessment<td>Q4<td><code>Neuron</code><tr><td>24 - Skills Assessment<td>Q5<td><code>Transformer</code></table></div><aside class=notice_BufS aria-label="Article copyright notice"><p class=line_E2vZ>This article is licensed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank rel="license noopener noreferrer">CC BY-NC-SA 4.0</a>. When sharing, please retain the author (<a class=author_SUwf href=/about>Callum</a> <a href=https://x.com/0xca1x target=_blank rel="noopener noreferrer" class=handle_v9g0>@0xca1x</a>) and the original link.<p class=line_E2vZ>Original link:<!-- --> <a class=url_RD_4 href=/docs/sec/writeups/htb-academy/Fundamentals-of-AI/>/docs/sec/writeups/htb-academy/Fundamentals-of-AI/</a></aside></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href=/docs/sec/writeups/htb-academy/Intro-to-Academy/><div class=pagination-nav__sublabel>Previous</div><div class=pagination-nav__label>Intro to Academy</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/docs/sec/writeups/htb-academy/Applications-of-AI-in-InfoSec/><div class=pagination-nav__sublabel>Next</div><div class=pagination-nav__label>Applications of AI in InfoSec</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#table-of-contents class="table-of-contents__link toc-highlight">Table of Contents</a><li><a href=#1-introduction-to-machine-learning class="table-of-contents__link toc-highlight">1. Introduction to Machine Learning</a><ul><li><a href=#key-learning-points class="table-of-contents__link toc-highlight">Key Learning Points</a><li><a href=#understanding-and-insights class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#2-mathematics-refresher-for-ai class="table-of-contents__link toc-highlight">2. Mathematics Refresher for AI</a><ul><li><a href=#key-knowledge-points class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-1 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-1 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#3-supervised-learning-algorithms class="table-of-contents__link toc-highlight">3. Supervised Learning Algorithms</a><ul><li><a href=#key-points class="table-of-contents__link toc-highlight">Key Points</a><li><a href=#understanding-and-insights-2 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-2 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#4-linear-regression class="table-of-contents__link toc-highlight">4. Linear Regression</a><ul><li><a href=#key-concepts class="table-of-contents__link toc-highlight">Key Concepts</a><li><a href=#understanding-and-insights-3 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-3 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#5-logistic-regression class="table-of-contents__link toc-highlight">5. Logistic Regression</a><ul><li><a href=#key-knowledge-points-1 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-4 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-4 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#6-decision-trees class="table-of-contents__link toc-highlight">6. Decision Trees</a><ul><li><a href=#key-concepts-1 class="table-of-contents__link toc-highlight">Key Concepts</a><li><a href=#understanding-and-insights-5 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-5 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#7-naive-bayes class="table-of-contents__link toc-highlight">7. Naive Bayes</a><ul><li><a href=#key-concepts-2 class="table-of-contents__link toc-highlight">Key Concepts</a><li><a href=#understanding-and-insights-6 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-6 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#8-support-vector-machines-svms class="table-of-contents__link toc-highlight">8. Support Vector Machines (SVMs)</a><ul><li><a href=#key-points-1 class="table-of-contents__link toc-highlight">Key Points</a><li><a href=#understanding-and-insights-7 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-7 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#9-unsupervised-learning-algorithms class="table-of-contents__link toc-highlight">9. Unsupervised Learning Algorithms</a><ul><li><a href=#key-takeaways class="table-of-contents__link toc-highlight">Key Takeaways</a><li><a href=#understanding-and-insights-8 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-8 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#10-k-means-clustering class="table-of-contents__link toc-highlight">10. K-Means Clustering</a><ul><li><a href=#key-points-2 class="table-of-contents__link toc-highlight">Key Points</a><li><a href=#insights class="table-of-contents__link toc-highlight">Insights</a><li><a href=#practical-takeaways-9 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#11-principal-component-analysis-pca class="table-of-contents__link toc-highlight">11. Principal Component Analysis (PCA)</a><ul><li><a href=#key-knowledge-points-2 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-9 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-10 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#12-anomaly-detection class="table-of-contents__link toc-highlight">12. Anomaly Detection</a><ul><li><a href=#key-knowledge-points-3 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-10 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-11 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#13-reinforcement-learning-algorithms class="table-of-contents__link toc-highlight">13. Reinforcement Learning Algorithms</a><ul><li><a href=#key-knowledge-points-4 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-11 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-12 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#14-q-learning class="table-of-contents__link toc-highlight">14. Q-Learning</a><ul><li><a href=#key-concepts-3 class="table-of-contents__link toc-highlight">Key Concepts</a><li><a href=#understanding-and-insights-12 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-13 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#15-sarsa-state-action-reward-state-action class="table-of-contents__link toc-highlight">15. SARSA (State-Action-Reward-State-Action)</a><ul><li><a href=#key-knowledge-points-5 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-13 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-14 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#16-introduction-to-deep-learning class="table-of-contents__link toc-highlight">16. Introduction to Deep Learning</a><ul><li><a href=#key-concepts-4 class="table-of-contents__link toc-highlight">Key Concepts</a><li><a href=#understanding-and-insights-14 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-15 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#17-perceptrons class="table-of-contents__link toc-highlight">17. Perceptrons</a><ul><li><a href=#key-knowledge-points-6 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-15 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-16 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#18-neural-networks class="table-of-contents__link toc-highlight">18. Neural Networks</a><ul><li><a href=#key-knowledge-points-7 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-16 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-17 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#19-convolutional-neural-networks class="table-of-contents__link toc-highlight">19. Convolutional Neural Networks</a><ul><li><a href=#key-knowledge-points-8 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-17 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-18 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#20-recurrent-neural-networks class="table-of-contents__link toc-highlight">20. Recurrent Neural Networks</a><ul><li><a href=#key-knowledge-points-9 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-18 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-19 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#21-introduction-to-generative-ai class="table-of-contents__link toc-highlight">21. Introduction to Generative AI</a><ul><li><a href=#key-concepts-5 class="table-of-contents__link toc-highlight">Key Concepts</a><li><a href=#understanding-and-insights-19 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-20 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#22-large-language-models class="table-of-contents__link toc-highlight">22. Large Language Models</a><ul><li><a href=#key-points-3 class="table-of-contents__link toc-highlight">Key Points</a><li><a href=#understanding-and-insights-20 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-21 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#23-diffusion-models class="table-of-contents__link toc-highlight">23. Diffusion Models</a><ul><li><a href=#key-knowledge-points-10 class="table-of-contents__link toc-highlight">Key Knowledge Points</a><li><a href=#understanding-and-insights-21 class="table-of-contents__link toc-highlight">Understanding and Insights</a><li><a href=#practical-takeaways-22 class="table-of-contents__link toc-highlight">Practical Takeaways</a></ul><li><a href=#24-skills-assessment class="table-of-contents__link toc-highlight">24. Skills Assessment</a><ul><li><a href=#exercise-solutions class="table-of-contents__link toc-highlight">Exercise Solutions</a></ul><li><a href=#answer-key class="table-of-contents__link toc-highlight">Answer Key</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/docs>Docs</a><li class=footer__item><a class=footer__link-item href=/docs/sec>Security</a><li class=footer__item><a class=footer__link-item href=/docs/web3>Web3</a><li class=footer__item><a class=footer__link-item href=/docs/ai>AI</a><li class=footer__item><a class=footer__link-item href=/docs/physical-ai>Physical AI</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Writing</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/about>About</a><li class=footer__item><a class=footer__link-item href=/blog>Blog</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/0xca1x target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://x.com/0xca1x target=_blank rel="noopener noreferrer" class=footer__link-item>X<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 Callum. All rights reserved.</div></div></div></footer></div></body>

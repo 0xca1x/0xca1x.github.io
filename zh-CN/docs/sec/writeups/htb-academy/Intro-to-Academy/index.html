@@ -1,0 +1,257 @@
+<!doctype html><html lang=zh-CN dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-sec/writeups/htb-academy/Intro-to-Academy/index" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.1"><title data-rh=true>Intro to Academy | Callum's Lab</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true property=og:image content=https://0xca1x.github.io/zh-CN/img/callums-lab-social-card.png /><meta data-rh=true name=twitter:image content=https://0xca1x.github.io/zh-CN/img/callums-lab-social-card.png /><meta data-rh=true property=og:url content=https://0xca1x.github.io/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/ /><meta data-rh=true property=og:locale content=zh_CN /><meta data-rh=true property=og:locale:alternate content=en_US /><meta data-rh=true name=docusaurus_locale content=zh-CN /><meta data-rh=true name=docsearch:language content=zh-CN /><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:type content=website /><meta data-rh=true property=og:site_name content="Callum's Lab"/><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Intro to Academy | Callum's Lab"/><meta data-rh=true name=description content="HTB Academy 平台入门模块 Writeup — 平台结构、模块体系、练习机制、认证路径的完整解析与题解"/><meta data-rh=true property=og:description content="HTB Academy 平台入门模块 Writeup — 平台结构、模块体系、练习机制、认证路径的完整解析与题解"/><meta data-rh=true name=keywords content="HTB Academy,Intro to Academy,Writeup,Hack The Box,入门"/><link data-rh=true rel=icon href=/zh-CN/img/favicon.svg /><link data-rh=true rel=canonical href=https://0xca1x.github.io/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/ /><link data-rh=true rel=alternate href=https://0xca1x.github.io/docs/sec/writeups/htb-academy/Intro-to-Academy/ hreflang=en-US /><link data-rh=true rel=alternate href=https://0xca1x.github.io/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/ hreflang=zh-CN /><link data-rh=true rel=alternate href=https://0xca1x.github.io/docs/sec/writeups/htb-academy/Intro-to-Academy/ hreflang=x-default /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://0xca1x.github.io/zh-CN/docs/sec/writeups/","name":"题解复盘","position":1},{"@type":"ListItem","item":"https://0xca1x.github.io/zh-CN/docs/sec/writeups/htb-academy/","name":"HTB Academy","position":2},{"@type":"ListItem","item":"https://0xca1x.github.io/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/","name":"Intro to Academy","position":3}]}</script><link rel=alternate type=application/rss+xml href=/zh-CN/blog/rss.xml title="Callum's Lab RSS Feed"><link rel=alternate type=application/atom+xml href=/zh-CN/blog/atom.xml title="Callum's Lab Atom Feed"><link rel=stylesheet href=/zh-CN/assets/css/styles.299bf99f.css /><script src=/zh-CN/assets/js/runtime~main.5d8096b5.js defer></script><script src=/zh-CN/assets/js/main.a29c12c8.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-callums-lab")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/zh-CN/img/logo.svg /><div role=region aria-label=跳到主要内容><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>跳到主要内容</a></div><nav aria-label=主导航 class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label=切换导航栏 aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/zh-CN/><div class=navbar__logo><img src=/zh-CN/img/logo.svg alt="Callum's Lab Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/zh-CN/img/logo.svg alt="Callum's Lab Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">Callum's Lab</b></a><a class="navbar__item navbar__link" href=/zh-CN/docs/>文档</a><a class="navbar__item navbar__link" href=/zh-CN/docs/sec>安全</a><a class="navbar__item navbar__link" href=/zh-CN/docs/web3>Web3</a><a class="navbar__item navbar__link" href=/zh-CN/docs/ai>AI</a><a class="navbar__item navbar__link" href=/zh-CN/blog>博客</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbar-search-first navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir=ltr><input placeholder=搜索 aria-label=Search class="navbar__search-input searchInput_YFbd" value="" /><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a href=# aria-haspopup=true aria-expanded=false role=button class="navbar__link localeDropdownTrigger_P4wv" data-locale=zh-CN><svg viewBox="0 0 24 24" width=20 height=20 aria-hidden=true class=iconLanguage_nlXk><path fill=currentColor d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>中文</a><ul class=dropdown__menu><li><a href=/docs/sec/writeups/htb-academy/Intro-to-Academy/ target=_self rel="noopener noreferrer" class=dropdown__link lang=en-US>English</a><li><a href=/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/ target=_self rel="noopener noreferrer" class="dropdown__link dropdown__link--active" lang=zh-CN>中文</a></ul></div><a href=https://github.com/0xca1x target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title=跟随系统 aria-label=切换浅色/暗黑模式（当前为跟随系统）><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label=回到顶部 class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label=文档侧边栏 class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/zh-CN/docs/sec/><span title=安全研究 class=linkLabel_WmDU>安全研究</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/zh-CN/docs/sec/writeups/><span title=题解复盘 class=categoryLinkLabel_W154>题解复盘</span></a><button aria-label="折叠侧边栏分类 '题解复盘'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" tabindex=0 href=/zh-CN/docs/sec/writeups/htb-academy/><span title="HTB Academy" class=categoryLinkLabel_W154>HTB Academy</span></a><button aria-label="折叠侧边栏分类 'HTB Academy'" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/><span title="Intro to Academy" class=linkLabel_WmDU>Intro to Academy</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/zh-CN/docs/sec/writeups/htb-academy/Fundamentals-of-AI/><span title="Fundamentals of AI" class=linkLabel_WmDU>Fundamentals of AI</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class=menu__link tabindex=0 href=/zh-CN/docs/sec/writeups/htb-academy/Applications-of-AI-in-InfoSec/><span title="Applications of AI in InfoSec" class=linkLabel_WmDU>Applications of AI in InfoSec</span></a></ul></ul></ul></nav></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label=页面路径><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label=主页面 class=breadcrumbs__link href=/zh-CN/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/zh-CN/docs/sec/writeups/><span>题解复盘</span></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/zh-CN/docs/sec/writeups/htb-academy/><span>HTB Academy</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Intro to Academy</span></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">本页总览</button></div><div class="theme-doc-markdown markdown"><header><h1>Intro to Academy — Writeup</h1></header>
+<table><thead><tr><th>模块 ID<th>难度<th>预计时长<th>章节数<th>奖励<tbody><tr><td>015<td>Fundamental · Tier 0<td>30 分钟<td>8（含 3 个交互式练习）<td>10 Cubes</table>
+<p><strong>模块链接：</strong> <a href=https://academy.hackthebox.com/module/details/15 target=_blank rel="noopener noreferrer" class="">academy.hackthebox.com/module/details/15</a></p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=目录>目录<a href=#目录 class=hash-link aria-label=目录的直接链接 title=目录的直接链接 translate=no>​</a></h2>
+<table><thead><tr><th>#<th>章节<th>类型<th>题目<tbody><tr><td>1<td><a href=#1-introduction class="">Introduction</a><td>Theory<td>—<tr><td>2<td><a href=#2-htb-academy-structure class="">HTB Academy Structure</a><td>Theory<td>—<tr><td>3<td><a href=#3-modules class="">Modules</a><td>Interactive<td>Q1 ✅<tr><td>4<td><a href=#4-sections class="">Sections</a><td>Interactive<td>Q1 ✅<tr><td>5<td><a href=#5-exercises class="">Exercises</a><td>Interactive<td>Q1 ✅<tr><td>6<td><a href=#6-paths-and-certifications class="">Paths and Certifications</a><td>Theory<td>—<tr><td>7<td><a href=#7-getting-help class="">Getting Help</a><td>Theory<td>—<tr><td>8<td><a href=#8-next-steps class="">Next Steps</a><td>Theory<td>—</table>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=1-introduction>1. Introduction<a href=#1-introduction class=hash-link aria-label="1. Introduction的直接链接" title="1. Introduction的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点>知识要点<a href=#知识要点 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">HTB Academy 是 Hack The Box 的官方在线学习平台，面向网络安全领域</li>
+<li class="">平台围绕三大核心理念构建：<!-- -->
+<ul>
+<li class=""><strong>高度交互（Highly Interactive）</strong>：通过实操练习学习，而非被动阅读</li>
+<li class=""><strong>引导式学习（Guided Learning）</strong>：循序渐进的教学路径，降低入门门槛</li>
+<li class=""><strong>技能评估（Skills Assessment）</strong>：大多数模块最终以接近实战的场景来检验所学</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察>理解与洞察<a href=#理解与洞察 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">三大理念并非独立存在，而是形成一个完整的学习闭环：引导式学习提供方向 → 交互式练习巩固知识 → Skills Assessment 验证能力</li>
+<li class="">"接近实战"是 HTB 区别于其他学习平台的关键——不是简单的选择题考试，而是需要动手完成的真实场景</li>
+<li class="">本节虽然短小，但明确了平台的学习哲学：<strong>做中学，学后测</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获>实践收获<a href=#实践收获 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">建立了对 HTB Academy 学习模式的预期：每个模块都将以动手实操为主，不能只看不练</li>
+<li class="">理解了平台的评估方式，后续学习时应有意识地将每个知识点与实战场景关联</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=2-htb-academy-structure>2. HTB Academy Structure<a href=#2-htb-academy-structure class=hash-link aria-label="2. HTB Academy Structure的直接链接" title="2. HTB Academy Structure的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点-1>知识要点<a href=#知识要点-1 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">HTB Academy 的学习结构为三级层级：</li>
+</ul>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-text codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><div class=token-line style=color:#393A34><span class="token plain">Path（学习路径）</span><br/></div><div class=token-line style=color:#393A34><span class="token plain"> └── Module（模块/课程）</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">       └── Section（章节）</span><br/></div></code></pre></div></div>
+<ul>
+<li class=""><strong>Path</strong>：最大的学习单元，由多个 Module 组成；部分 Path 对应认证考试</li>
+<li class=""><strong>Module</strong>：围绕一个特定主题的完整课程</li>
+<li class=""><strong>Section</strong>：最小的学习单元，设计为一次坐下来即可完成</li>
+<li class="">核心理念：将看似庞大的目标拆分为小步骤，逐步积累直到获得认证</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察-1>理解与洞察<a href=#理解与洞察-1 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">三级结构设计体现了"分而治之"的学习策略：Section 保证单次学习不过载，Module 保证知识体系完整，Path 保证职业方向明确</li>
+<li class="">Section 被设计为"一次坐下来即可完成"（designed to be completed in one sitting），适合碎片化学习</li>
+<li class="">Path 和 Module 之间是多对多关系：同一个 Module 可能出现在不同的 Path 中，选择不同的 Path 会有模块重叠，节省 Cubes 和时间</li>
+<li class="">理解这个结构对规划学习进度至关重要：先选 Path 定方向，再逐模块推进，每天完成几个 Section</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获-1>实践收获<a href=#实践收获-1 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">掌握了平台的内容组织方式，能够合理规划学习路径和节奏</li>
+<li class="">理解了"小步快跑"的学习方法论，避免被庞大的课程体系吓退</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=3-modules>3. Modules<a href=#3-modules class=hash-link aria-label="3. Modules的直接链接" title="3. Modules的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点-2>知识要点<a href=#知识要点-2 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class=""><strong>模块类型</strong>：Offensive（攻击）、Defensive（防御）、Purple（紫队）、General（通用）</li>
+<li class=""><strong>模块难度</strong>：Fundamental、Easy、Medium、Hard</li>
+<li class=""><strong>模块层级与费用</strong>：</li>
+</ul>
+<table><thead><tr><th>Tier<th>解锁费用 (Cubes)<th>完成奖励 (Cubes)<tbody><tr><td>Tier 0（免费）<td>10<td>10<tr><td>Tier I<td>50<td>10<tr><td>Tier II<td>100<td>20<tr><td>Tier III<td>500<td>100<tr><td>Tier IV<td>1000<td>200</table>
+<ul>
+<li class="">每个模块完成后返还 <strong>20%</strong> 的解锁费用</li>
+<li class="">Tier 0 模块花费 10 Cubes、返还 10 Cubes，等于<strong>免费</strong></li>
+<li class="">Tier <strong>不等于</strong>难度——Tier 反映的是费用，不是模块的技术难度</li>
+<li class="">年度订阅用户解锁包含模块不消耗 Cubes，但仍可获得完成奖励</li>
+<li class="">完成模块需解决所有练习并标记所有章节完成，最后通过 <strong>Skills Assessment</strong>，点击 <strong>Finish</strong> 完成模块</li>
+<li class="">完成后可在社交媒体分享成就、为模块写评价，并解锁对应 <strong>Badge</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察-2>理解与洞察<a href=#理解与洞察-2 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">Tier 和难度是两个独立维度，容易混淆：一个 Tier IV 的模块可能是 Easy 难度（内容简单但篇幅长），一个 Tier I 模块可能是 Hard 难度（内容难但篇幅短）。选模块时要同时看这两个指标</li>
+<li class="">Cubes 经济系统的设计鼓励完成而非囤积：Tier 0 完全免费（花 10 还 10），高 Tier 模块返还 20%——这意味着持续完成模块是维持 Cubes 余额的关键</li>
+<li class="">"完成"的定义比想象中严格：不仅要答对所有题，还要逐章节点击 Mark Complete，最后通过 Skills Assessment 并点击 Finish。漏掉任何一步都不算完成，不会获得 Badge 和 Cubes 奖励</li>
+<li class="">年度订阅用户的最大优势不仅是免费解锁，更在于可以无顾虑地探索不同模块而不用担心 Cubes 消耗</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获-2>实践收获<a href=#实践收获-2 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">学会了根据 Tier 和难度两个维度评估模块，合理分配 Cubes 预算</li>
+<li class="">明确了模块完成的完整流程，避免因遗漏步骤而错失奖励</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=练习题解>练习题解<a href=#练习题解 class=hash-link aria-label=练习题解的直接链接 title=练习题解的直接链接 translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q1-this-module-is-a-tier-0-free-module-what-is-the-total-cubes-that-will-be-rewarded-back-to-you-by-completing-it>Q1: This module is a tier 0 "free" module. What is the total cubes that will be rewarded back to you by completing it?<a href=#q1-this-module-is-a-tier-0-free-module-what-is-the-total-cubes-that-will-be-rewarded-back-to-you-by-completing-it class=hash-link aria-label='Q1: This module is a tier 0 "free" module. What is the total cubes that will be rewarded back to you by completing it?的直接链接' title='Q1: This module is a tier 0 "free" module. What is the total cubes that will be rewarded back to you by completing it?的直接链接' translate=no>​</a></h4>
+<blockquote>
+<p><strong>Hint:</strong> Consult the tiers table above</p>
+</blockquote>
+<p><strong>解题思路：</strong></p>
+<ol>
+<li class="">题目告诉我们当前模块是 <strong>Tier 0</strong> 模块</li>
+<li class="">查看上方表格中 Tier 0 对应的 <strong>Reward</strong> 列</li>
+<li class="">Tier 0 的完成奖励为 <strong>10</strong> Cubes</li>
+</ol>
+<p><strong>答案：</strong> <code>10</code></p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=4-sections>4. Sections<a href=#4-sections class=hash-link aria-label="4. Sections的直接链接" title="4. Sections的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点-3>知识要点<a href=#知识要点-3 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Theory Section（理论章节）</strong>：纯知识讲解，无实操</li>
+<li class=""><strong>Interactive Section（交互式章节）</strong>：包含演示和练习题，是 HTB Academy 的主体</li>
+<li class=""><strong>Pwnbox</strong>：浏览器内置的 Parrot OS 虚拟环境，无需本地配置即可实操</li>
+<li class=""><strong>笔记功能</strong>：每个章节支持在线记笔记；结合 Cheatsheet 为备考利器</li>
+<li class="">完成章节需点击 "Mark Complete and Next"；有练习题的章节必须先提交正确答案</li>
+<li class="">可点击 <strong>Next</strong> 跳过当前章节，稍后再回来完成</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察-3>理解与洞察<a href=#理解与洞察-3 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">Theory Section 和 Interactive Section 的区分很重要：Theory 章节快速阅读即可标记完成，而 Interactive 章节才是真正的学习核心，需要投入更多时间</li>
+<li class="">Pwnbox 是平台的一大亮点——它消除了环境配置这个初学者最大的障碍。但要注意 Pwnbox 会话有时间限制，长时间操作时需留意倒计时</li>
+<li class="">笔记功能容易被忽视，但它是备考的利器：每个 Section 内的笔记与该章节绑定，复习时可以快速定位自己的理解和疑问</li>
+<li class="">"跳过"机制是把双刃剑：允许先跳过难点继续前进，但如果一直跳过不回来补完，模块将无法完成</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获-3>实践收获<a href=#实践收获-3 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">学会了使用 Pwnbox 进行浏览器内实操，无需本地搭建任何环境</li>
+<li class="">了解了章节完成的机制，能够灵活安排学习顺序（先易后难）</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=练习题解-1>练习题解<a href=#练习题解-1 class=hash-link aria-label=练习题解的直接链接 title=练习题解的直接链接 translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q1-start-your-workstation-then-use-the-integrated-terminal-to-find-the-linux-os-flavor-by-running-the-following-command-cat-etcissue>Q1: Start your workstation, then use the integrated terminal to find the Linux OS flavor by running the following command: cat /etc/issue<a href=#q1-start-your-workstation-then-use-the-integrated-terminal-to-find-the-linux-os-flavor-by-running-the-following-command-cat-etcissue class=hash-link aria-label="Q1: Start your workstation, then use the integrated terminal to find the Linux OS flavor by running the following command: cat /etc/issue的直接链接" title="Q1: Start your workstation, then use the integrated terminal to find the Linux OS flavor by running the following command: cat /etc/issue的直接链接" translate=no>​</a></h4>
+<blockquote>
+<p><strong>Hint:</strong> It is the name of a bird</p>
+</blockquote>
+<p><strong>解题思路：</strong></p>
+<ol>
+<li class="">在模块页面底部，点击 <strong>"Connect to HTB"</strong> → <strong>"Start Pwnbox"</strong>，启动 Pwnbox 工作站</li>
+<li class="">等待 Pwnbox 加载完成后，打开内置终端</li>
+<li class="">在终端中执行以下命令：</li>
+</ol>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><div class=token-line style=color:#393A34><span class="token plain">cat /etc/issue</span><br/></div></code></pre></div></div>
+<ol start=4>
+<li class="">输出内容类似：</li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-text codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><div class=token-line style=color:#393A34><span class="token plain">Parrot GNU/Linux 5.x \n \l</span><br/></div></code></pre></div></div>
+<ol start=5>
+<li class="">可以看到操作系统名称为 <strong>Parrot</strong>（一种鹦鹉）</li>
+</ol>
+<p><strong>答案：</strong> <code>Parrot</code></p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=5-exercises>5. Exercises<a href=#5-exercises class=hash-link aria-label="5. Exercises的直接链接" title="5. Exercises的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点-4>知识要点<a href=#知识要点-4 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">练习通常附带一个可启动的目标（Target），分为两类：<!-- -->
+<ul>
+<li class=""><strong>Docker Target</strong>：启动快，通过 <code>IP:PORT</code> 直接在浏览器中访问，无需 VPN</li>
+<li class=""><strong>VM Target</strong>：用于更复杂的场景（Windows / AD / 网络环境），需要通过 VPN 或 Pwnbox 访问</li>
+</ul>
+</li>
+<li class="">每位用户同一时间只能有<strong>一个活跃的目标</strong></li>
+<li class="">部分题目提供 <strong>Hint</strong>（提示）按钮</li>
+<li class="">标记为 <strong>Optional Exercises</strong> 的题目可以直接 Reveal Answer，不影响章节完成</li>
+<li class="">正确回答练习题会奖励一定数量的 <strong>Cubes</strong></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察-4>理解与洞察<a href=#理解与洞察-4 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">Docker Target 和 VM Target 的区别不仅是技术实现，更影响学习体验：Docker 目标秒级启动、直接浏览器访问，适合快速练习；VM 目标需要 VPN 或 Pwnbox，启动较慢，但提供更真实的渗透测试环境</li>
+<li class="">"同一时间只能有一个活跃目标"是重要限制——启动新目标会自动关闭当前目标。做到一半的进度不会保存，因此启动目标前应确保有足够时间完成当前练习</li>
+<li class="">Optional Exercises 虽然可以直接查看答案，但它们往往是对核心概念的延伸。跳过它们不影响完成度，但会错过额外的练习机会</li>
+<li class="">Hint 功能是学习辅助而非作弊——合理使用 Hint 可以避免在非核心知识点上卡住太久</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获-4>实践收获<a href=#实践收获-4 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">掌握了两种目标类型的启动和访问方式，能够根据练习类型选择合适的连接方式</li>
+<li class="">理解了目标管理的限制，学会在启动目标前做好时间规划</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=练习题解-2>练习题解<a href=#练习题解-2 class=hash-link aria-label=练习题解的直接链接 title=练习题解的直接链接 translate=no>​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id=q1-start-the-above-target-copy-the-shown-ip-by-clicking-on-them-and-then-paste-them-in-your-browser-whats-the-proof-shown-in-the-page>Q1: Start the above target, copy the shown IP<!-- -->:PORT<!-- --> by clicking on them, and then paste them in your browser. What's the proof shown in the page?<a href=#q1-start-the-above-target-copy-the-shown-ip-by-clicking-on-them-and-then-paste-them-in-your-browser-whats-the-proof-shown-in-the-page class=hash-link aria-label=q1-start-the-above-target-copy-the-shown-ip-by-clicking-on-them-and-then-paste-them-in-your-browser-whats-the-proof-shown-in-the-page的直接链接 title=q1-start-the-above-target-copy-the-shown-ip-by-clicking-on-them-and-then-paste-them-in-your-browser-whats-the-proof-shown-in-the-page的直接链接 translate=no>​</a></h4>
+<blockquote>
+<p><strong>Hint:</strong> Follow along the GIF above</p>
+</blockquote>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li class="">在模块页面底部找到 <strong>"Spawn the target system"</strong> 按钮，点击启动目标</li>
+<li class="">等待目标启动完成，页面将显示一个 <code>IP:PORT</code> 地址（例如 <code>94.237.xx.xx:xxxxx</code>）</li>
+<li class="">点击该 <code>IP:PORT</code> 复制到剪贴板</li>
+<li class="">打开浏览器，将地址粘贴到地址栏并访问</li>
+<li class="">页面将显示一段 proof 文字</li>
+</ol>
+<p><strong>答案：</strong> <code>t4rg3ts</code></p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=6-paths-and-certifications>6. Paths and Certifications<a href=#6-paths-and-certifications class=hash-link aria-label="6. Paths and Certifications的直接链接" title="6. Paths and Certifications的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点-5>知识要点<a href=#知识要点-5 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class=""><strong>Skill Path（技能路径）</strong>：围绕一个特定热门技能组织模块，如 Basic Toolset</li>
+<li class=""><strong>Job-Role Path（职业路径）</strong>：为特定网安岗位设计，关联 HTB 认证考试</li>
+<li class="">注册 Path <strong>不消耗</strong> Cubes（注册不等于解锁模块）</li>
+<li class="">路径页面的 <strong>Duration</strong> 以 8 小时工作日计算（2 天 = 16 小时）</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察-5>理解与洞察<a href=#理解与洞察-5 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">Skill Path 和 Job-Role Path 的核心区别在于目的性：Skill Path 适合"我想学某个技能"的场景，Job-Role Path 适合"我想拿某个认证/从事某个岗位"的场景</li>
+<li class="">"注册不消耗 Cubes"容易产生误解——注册 Path 只是将其添加到你的学习仪表盘，<strong>解锁 Path 内的各个模块仍然需要 Cubes</strong>。可以先注册多个 Path 做对比，再决定投入 Cubes 解锁哪些模块</li>
+<li class="">Duration 的"8 小时工作日"计算方式是一个有用的规划参考：如果一个 Path 标注为 10 天，意味着大约需要 80 小时的学习时间。根据每天实际可投入的时间来估算真实完成周期</li>
+<li class="">HTB 认证体系从初级到高级形成了清晰的职业进阶路线，中级阶段按攻击（CPTS）、Web（CWES）、防御（CDSA）三个方向分化</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获-5>实践收获<a href=#实践收获-5 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">能够根据自身水平和目标选择合适的 Path 类型（Skill Path 补短板，Job-Role Path 冲认证）</li>
+<li class="">掌握了 Duration 的换算方式，可以制定现实可行的学习时间规划</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=htb-认证体系>HTB 认证体系<a href=#htb-认证体系 class=hash-link aria-label="HTB 认证体系的直接链接" title="HTB 认证体系的直接链接" translate=no>​</a></h3>
+<table><thead><tr><th>级别<th>认证<th>说明<tbody><tr><td>初级<td>HTB CJCA<td>Junior Cybersecurity Associate，零基础起步<tr><td>中级<td>HTB CPTS<td>Certified Penetration Testing Specialist<tr><td>中级<td>HTB CWES<td>Certified Web Exploitation Specialist<tr><td>中级<td>HTB CDSA<td>Certified Defensive Security Analyst<tr><td>高级<td>HTB CWEE<td>Certified Web Exploitation Expert<tr><td>高级<td>HTB CAPE<td>Certified Active Directory Pentesting Expert</table>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=7-getting-help>7. Getting Help<a href=#7-getting-help class=hash-link aria-label="7. Getting Help的直接链接" title="7. Getting Help的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点-6>知识要点<a href=#知识要点-6 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">遇到困难时有三种求助途径：<!-- -->
+<ol>
+<li class=""><strong>Help Center</strong>：点击顶栏的帮助按钮，查阅常见问题和平台使用指南</li>
+<li class=""><strong>Show Solution</strong>：每道练习题下方的步骤式题解（仅年度订阅 / 企业用户可用）</li>
+<li class=""><strong>Discord</strong>：加入 <a href=https://discord.com/invite/hackthebox target=_blank rel="noopener noreferrer" class="">Hack The Box Discord</a> 社区交流</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察-6>理解与洞察<a href=#理解与洞察-6 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">三种途径适用于不同场景：Help Center 解决平台操作问题，Show Solution 解决具体题目卡关，Discord 解决开放性疑问和深度讨论</li>
+<li class="">Show Solution 是年度订阅的隐藏价值之一——对于初学者，这相当于每道题都有详细的官方题解。但过度依赖会削弱独立解题能力，建议至少独立尝试 30 分钟后再查看</li>
+<li class="">Discord 社区不仅是求助渠道，也是信息源：可以了解其他学员的学习进度、发现新模块推荐、获取认证考试的经验分享</li>
+<li class="">在 Discord 提问时遵循社区规范：不直接发送答案（flag），而是描述你的思路和卡在哪一步</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获-6>实践收获<a href=#实践收获-6 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">掌握了三种不同层次的求助方式，能在卡关时快速找到合适的帮助渠道</li>
+<li class="">理解了独立解题与适时求助之间的平衡——先尝试、再提示、最后求解</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=8-next-steps>8. Next Steps<a href=#8-next-steps class=hash-link aria-label="8. Next Steps的直接链接" title="8. Next Steps的直接链接" translate=no>​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=知识要点-7>知识要点<a href=#知识要点-7 class=hash-link aria-label=知识要点的直接链接 title=知识要点的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">平台根据用户水平推荐了三个层级的学习路径：</li>
+</ul>
+<table><thead><tr><th>你的水平<th>推荐路径<th>目标认证<tbody><tr><td><strong>入门</strong><td>Junior Cybersecurity Analyst<td>HTB CJCA<tr><td><strong>中级</strong><td>Penetration Tester / Web Exploitation Specialist / Defensive Security Analyst<td>HTB CPTS / CWES / CDSA<tr><td><strong>高级</strong><td>Senior Web Penetration Tester / Active Directory Penetration Tester<td>HTB CWEE / CAPE</table>
+<ul>
+<li class="">入门者建议从 CJCA 路径开始，该路径从零基础起步</li>
+<li class="">中级阶段有三个方向可选，分别对应渗透测试、Web 攻击、防御分析</li>
+<li class="">高级阶段专注于 Web 深度攻击和 Active Directory 渗透</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=理解与洞察-7>理解与洞察<a href=#理解与洞察-7 class=hash-link aria-label=理解与洞察的直接链接 title=理解与洞察的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">路径选择不是一锤定音的决定：可以先走 CJCA 建立基础，再根据兴趣分支到中级方向。不同路径之间有模块重叠，先完成的模块在后续路径中不需要重复</li>
+<li class="">"入门→中级→高级"不是严格的线性关系：如果你已有 IT 基础（如系统管理、编程经验），可以直接从中级路径开始，遇到知识空白再回头补 Fundamental 模块</li>
+<li class="">中级三个方向（CPTS/CWES/CDSA）代表了网安行业最主流的三条职业赛道：红队攻击、Web 安全、蓝队防御。选择时应结合自己的兴趣和目标岗位</li>
+<li class="">本模块（Intro to Academy）作为 Tier 0 免费模块，是所有路径的共同起点，完成它不消耗任何 Cubes</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id=实践收获-7>实践收获<a href=#实践收获-7 class=hash-link aria-label=实践收获的直接链接 title=实践收获的直接链接 translate=no>​</a></h3>
+<ul>
+<li class="">对 HTB 学习路径有了全局认知，能够根据自身水平制定清晰的学习规划</li>
+<li class="">理解了认证体系的层级关系，为长期职业发展建立了方向感</li>
+</ul>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=答案速查>答案速查<a href=#答案速查 class=hash-link aria-label=答案速查的直接链接 title=答案速查的直接链接 translate=no>​</a></h2>
+<table><thead><tr><th>章节<th>题号<th>答案<tbody><tr><td>3 - Modules<td>Q1<td><code>10</code><tr><td>4 - Sections<td>Q1<td><code>Parrot</code><tr><td>5 - Exercises<td>Q1<td><code>t4rg3ts</code></table></div><aside class=notice_BufS aria-label="Article copyright notice"><p class=line_E2vZ>本文采用 <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank rel="license noopener noreferrer">CC BY-NC-SA 4.0</a> 协议发布。转载请保留作者 <a class=author_SUwf href=/zh-CN/about>Callum</a> <a href=https://x.com/0xca1x target=_blank rel="noopener noreferrer" class=handle_v9g0>@0xca1x</a> 与原文链接。<p class=line_E2vZ>原文链接：<!-- --> <a class=url_RD_4 href=/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/>/zh-CN/docs/sec/writeups/htb-academy/Intro-to-Academy/</a></aside></article><nav class="docusaurus-mt-lg pagination-nav" aria-label=文件选项卡><a class="pagination-nav__link pagination-nav__link--prev" href=/zh-CN/docs/sec/writeups/htb-academy/><div class=pagination-nav__sublabel>上一页</div><div class=pagination-nav__label>HTB Academy</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/zh-CN/docs/sec/writeups/htb-academy/Fundamentals-of-AI/><div class=pagination-nav__sublabel>下一页</div><div class=pagination-nav__label>Fundamentals of AI</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#目录 class="table-of-contents__link toc-highlight">目录</a><li><a href=#1-introduction class="table-of-contents__link toc-highlight">1. Introduction</a><ul><li><a href=#知识要点 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获 class="table-of-contents__link toc-highlight">实践收获</a></ul><li><a href=#2-htb-academy-structure class="table-of-contents__link toc-highlight">2. HTB Academy Structure</a><ul><li><a href=#知识要点-1 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察-1 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获-1 class="table-of-contents__link toc-highlight">实践收获</a></ul><li><a href=#3-modules class="table-of-contents__link toc-highlight">3. Modules</a><ul><li><a href=#知识要点-2 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察-2 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获-2 class="table-of-contents__link toc-highlight">实践收获</a><li><a href=#练习题解 class="table-of-contents__link toc-highlight">练习题解</a></ul><li><a href=#4-sections class="table-of-contents__link toc-highlight">4. Sections</a><ul><li><a href=#知识要点-3 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察-3 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获-3 class="table-of-contents__link toc-highlight">实践收获</a><li><a href=#练习题解-1 class="table-of-contents__link toc-highlight">练习题解</a></ul><li><a href=#5-exercises class="table-of-contents__link toc-highlight">5. Exercises</a><ul><li><a href=#知识要点-4 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察-4 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获-4 class="table-of-contents__link toc-highlight">实践收获</a><li><a href=#练习题解-2 class="table-of-contents__link toc-highlight">练习题解</a></ul><li><a href=#6-paths-and-certifications class="table-of-contents__link toc-highlight">6. Paths and Certifications</a><ul><li><a href=#知识要点-5 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察-5 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获-5 class="table-of-contents__link toc-highlight">实践收获</a><li><a href=#htb-认证体系 class="table-of-contents__link toc-highlight">HTB 认证体系</a></ul><li><a href=#7-getting-help class="table-of-contents__link toc-highlight">7. Getting Help</a><ul><li><a href=#知识要点-6 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察-6 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获-6 class="table-of-contents__link toc-highlight">实践收获</a></ul><li><a href=#8-next-steps class="table-of-contents__link toc-highlight">8. Next Steps</a><ul><li><a href=#知识要点-7 class="table-of-contents__link toc-highlight">知识要点</a><li><a href=#理解与洞察-7 class="table-of-contents__link toc-highlight">理解与洞察</a><li><a href=#实践收获-7 class="table-of-contents__link toc-highlight">实践收获</a></ul><li><a href=#答案速查 class="table-of-contents__link toc-highlight">答案速查</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>文档</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/zh-CN/docs>文档</a><li class=footer__item><a class=footer__link-item href=/zh-CN/docs/sec>安全</a><li class=footer__item><a class=footer__link-item href=/zh-CN/docs/web3>Web3</a><li class=footer__item><a class=footer__link-item href=/zh-CN/docs/ai>AI</a><li class=footer__item><a class=footer__link-item href=/zh-CN/docs/physical-ai>Physical AI 安全</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>写作</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/zh-CN/about>关于</a><li class=footer__item><a class=footer__link-item href=/zh-CN/blog>博客</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>更多</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://github.com/0xca1x target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-label=(在新标签页中打开) class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a><li class=footer__item><a href=https://x.com/0xca1x target=_blank rel="noopener noreferrer" class=footer__link-item>X<svg width=13.5 height=13.5 aria-label=(在新标签页中打开) class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2026 Callum. All rights reserved.</div></div></div></footer></div></body>

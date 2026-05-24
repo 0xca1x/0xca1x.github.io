@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcallums_lab=self.webpackChunkcallums_lab||[]).push([["3186"],{8070(e){e.exports=JSON.parse('{"tags":[{"label":"Security","permalink":"/blog/tags/security","description":"Security research, writeups, and practical notes","count":1}]}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcallums_lab=self.webpackChunkcallums_lab||[]).push([["6329"],{1671(a){a.exports=JSON.parse('{"metadata":{"permalink":"/zh-CN/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"\u56F4\u7ED5\u5B89\u5168\u3001Web3 \u4E0E AI \u7684\u968F\u7B14\u4E0E\u9898\u89E3\u590D\u76D8","blogTitle":"Callum \u7684\u535A\u5BA2"}}')}}]);
